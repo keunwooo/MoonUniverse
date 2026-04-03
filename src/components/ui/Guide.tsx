@@ -48,9 +48,10 @@ export default function Guide() {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               style={{
                 position: 'fixed',
-                top: 0, right: 0, bottom: 0,
+                top: 0, right: 0,
                 width: '320px',
                 maxWidth: '85vw',
+                height: '100vh',
                 background: '#0f172a',
                 borderLeft: '1px solid #1e293b',
                 zIndex: 95,
