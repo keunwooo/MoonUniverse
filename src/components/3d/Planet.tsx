@@ -51,7 +51,6 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
           parentPosition={[0, 0, 0]}
           color={config.color}
           name={config.moon.name}
-          tutorialCount={config.moon.tutorialProblems}
           subjectId={config.id}
           onClick={() => onMoonClick(config.id)}
         />

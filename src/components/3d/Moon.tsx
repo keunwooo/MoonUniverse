@@ -1,29 +1,45 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import type { Mesh } from 'three'
 import { useGameStore } from '../../stores/useGameStore'
+import type { Problem } from '../../types'
+
+import algebraData from '../../data/problems/algebra.json'
+import geometryData from '../../data/problems/geometry.json'
+import functionsData from '../../data/problems/functions.json'
+import calculusData from '../../data/problems/calculus.json'
+import probabilityData from '../../data/problems/probability.json'
+
+const SUBJECT_PROBLEMS: Record<string, Problem[]> = {
+  algebra: algebraData.problems as Problem[],
+  geometry: geometryData.problems as Problem[],
+  functions: functionsData.problems as Problem[],
+  calculus: calculusData.problems as Problem[],
+  probability: probabilityData.problems as Problem[],
+}
 
 interface Props {
   parentPosition: [number, number, number]
   color: string
   name: string
-  tutorialCount: number
   subjectId: string
   onClick: () => void
 }
 
-export default function Moon({ parentPosition, color, name, tutorialCount, subjectId, onClick }: Props) {
+export default function Moon({ parentPosition, color, name, subjectId, onClick }: Props) {
   const ref = useRef<Mesh>(null)
   const [hovered, setHovered] = useState(false)
   const angleRef = useRef(Math.random() * Math.PI * 2)
   const solved = useGameStore((s) => s.progress.solved)
 
-  // Count solved tutorials for this subject
-  const prefix = subjectId.slice(0, 3).toUpperCase()
-  const solvedTutorials = Object.keys(solved).filter(
-    id => id.startsWith(prefix + '-T') && solved[id]?.correct
-  ).length
+  // Count from actual problem data
+  const tutorials = useMemo(() =>
+    (SUBJECT_PROBLEMS[subjectId] ?? []).filter(p => p.tier === 'tutorial'),
+    [subjectId]
+  )
+  const tutorialCount = tutorials.length
+  const solvedTutorials = tutorials.filter(p => solved[p.id]?.correct).length
   const allComplete = tutorialCount > 0 && solvedTutorials >= tutorialCount
 
   useFrame((_, delta) => {

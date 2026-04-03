@@ -13,7 +13,7 @@ export const solarSystem: SolarSystemConfig = {
       orbitRadius: 8,
       size: 1.2,
       texture: 'textures/algebra.jpg',
-      moon: { name: '대수 기초', tutorialProblems: 5 },
+      moon: { name: '대수 기초', tutorialProblems: 4 },
     },
     {
       id: 'geometry',
@@ -22,7 +22,7 @@ export const solarSystem: SolarSystemConfig = {
       orbitRadius: 13,
       size: 1.4,
       texture: 'textures/geometry.jpg',
-      moon: { name: '기하 기초', tutorialProblems: 5 },
+      moon: { name: '기하 기초', tutorialProblems: 4 },
     },
     {
       id: 'functions',
@@ -31,7 +31,7 @@ export const solarSystem: SolarSystemConfig = {
       orbitRadius: 18,
       size: 1.1,
       texture: 'textures/functions.jpg',
-      moon: { name: '함수 기초', tutorialProblems: 5 },
+      moon: { name: '함수 기초', tutorialProblems: 4 },
     },
     {
       id: 'calculus',
@@ -40,7 +40,7 @@ export const solarSystem: SolarSystemConfig = {
       orbitRadius: 23,
       size: 1.5,
       texture: 'textures/calculus.jpg',
-      moon: { name: '미적분 기초', tutorialProblems: 5 },
+      moon: { name: '미적분 기초', tutorialProblems: 4 },
     },
     {
       id: 'probability',
@@ -49,7 +49,7 @@ export const solarSystem: SolarSystemConfig = {
       orbitRadius: 28,
       size: 1.3,
       texture: 'textures/probability.jpg',
-      moon: { name: '확률통계 기초', tutorialProblems: 5 },
+      moon: { name: '확률통계 기초', tutorialProblems: 4 },
     },
   ],
 }
