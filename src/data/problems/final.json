@@ -1,0 +1,103 @@
+{
+  "subject": "final",
+  "problems": [
+    {
+      "id": "FIN-01",
+      "title": "이차방정식과 판별식",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "이차방정식 x² + kx + 9 = 0이 중근을 가질 때, 양수 k의 값은?",
+      "questionLatex": "x^2 + kx + 9 = 0",
+      "answer": "6",
+      "solution": [
+        { "step": 1, "title": "판별식 조건", "text": "중근 조건: D = b² - 4ac = 0", "latex": "k^2 - 36 = 0" },
+        { "step": 2, "title": "풀이", "text": "k² = 36, k = ±6", "latex": "k = 6 \\;(k > 0)" }
+      ],
+      "xp": 50,
+      "tags": ["이차방정식", "판별식", "대수"]
+    },
+    {
+      "id": "FIN-02",
+      "title": "원과 직선의 관계",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "원 x² + y² = 25 위의 점 (3, 4)에서의 접선의 기울기는?",
+      "questionLatex": "x^2 + y^2 = 25",
+      "answer": "-0.75",
+      "solution": [
+        { "step": 1, "title": "접선 공식", "text": "원 위의 점 (a,b)에서 접선: ax + by = r²", "latex": "3x + 4y = 25" },
+        { "step": 2, "title": "기울기 계산", "text": "y = (-3x + 25)/4", "latex": "\\text{기울기} = -\\frac{3}{4} = -0.75" }
+      ],
+      "xp": 50,
+      "tags": ["원", "접선", "기하"]
+    },
+    {
+      "id": "FIN-03",
+      "title": "합성함수의 미분",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "f(x) = (3x + 1)⁴일 때, f'(0)의 값은?",
+      "questionLatex": "f(x) = (3x+1)^4",
+      "answer": "12",
+      "solution": [
+        { "step": 1, "title": "연쇄 법칙", "text": "f'(x) = 4(3x+1)³ · 3 = 12(3x+1)³", "latex": "f'(x) = 12(3x+1)^3" },
+        { "step": 2, "title": "x=0 대입", "text": "f'(0) = 12 · 1³ = 12", "latex": "f'(0) = 12" }
+      ],
+      "xp": 50,
+      "tags": ["미분", "연쇄법칙", "미적분"]
+    },
+    {
+      "id": "FIN-04",
+      "title": "조건부 확률",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "주사위 2개를 던져 합이 8일 때, 하나가 3일 확률은? (분수로 입력: 예 2/5)",
+      "answer": "2/5",
+      "solution": [
+        { "step": 1, "title": "합이 8인 경우", "text": "(2,6)(3,5)(4,4)(5,3)(6,2) → 5가지", "latex": "n(A) = 5" },
+        { "step": 2, "title": "하나가 3인 경우", "text": "(3,5)와 (5,3) → 2가지", "latex": "n(A \\cap B) = 2" },
+        { "step": 3, "title": "조건부 확률", "text": "P(B|A) = 2/5", "latex": "P(B|A) = \\frac{2}{5}" }
+      ],
+      "xp": 50,
+      "tags": ["조건부확률", "확률통계"]
+    },
+    {
+      "id": "FIN-05",
+      "title": "역함수와 합성",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "f(x) = 2x + 3일 때, f⁻¹(f⁻¹(11))의 값은?",
+      "questionLatex": "f(x) = 2x + 3",
+      "answer": "0.5",
+      "solution": [
+        { "step": 1, "title": "역함수 구하기", "text": "y = 2x + 3 → x = (y-3)/2", "latex": "f^{-1}(x) = \\frac{x-3}{2}" },
+        { "step": 2, "title": "f⁻¹(11)", "text": "(11-3)/2 = 4", "latex": "f^{-1}(11) = 4" },
+        { "step": 3, "title": "f⁻¹(4)", "text": "(4-3)/2 = 0.5", "latex": "f^{-1}(4) = \\frac{1}{2}" }
+      ],
+      "xp": 50,
+      "tags": ["역함수", "합성", "함수"]
+    },
+    {
+      "id": "FIN-06",
+      "title": "정적분 넓이",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "y = x²과 y = 4로 둘러싸인 영역의 넓이는? (소수 둘째자리까지)",
+      "questionLatex": "\\int_{-2}^{2}(4-x^2)dx",
+      "answer": "10.67",
+      "solution": [
+        { "step": 1, "title": "교점", "text": "x² = 4, x = ±2", "latex": "x = \\pm 2" },
+        { "step": 2, "title": "적분", "text": "∫(4-x²)dx = [4x - x³/3]", "latex": "\\left[4x - \\frac{x^3}{3}\\right]_{-2}^{2}" },
+        { "step": 3, "title": "계산", "text": "(8-8/3) - (-8+8/3) = 32/3 ≈ 10.67", "latex": "\\frac{32}{3} \\approx 10.67" }
+      ],
+      "xp": 50,
+      "tags": ["정적분", "넓이", "미적분"]
+    }
+  ]
+}

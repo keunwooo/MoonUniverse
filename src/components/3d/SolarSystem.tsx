@@ -23,6 +23,7 @@ const problemMap: Record<string, Problem[]> = {
 interface Props {
   onPlanetClick: (planetId: string, position: [number, number, number]) => void
   onMoonClick: (planetId: string) => void
+  onSunClick: (unlocked: boolean) => void
   onStarHover: (problem: Problem | null) => void
   onStarClick: (problem: Problem) => void
   activePlanet: string | null
@@ -53,12 +54,12 @@ function PlanetStars({ planet, onStarHover, onStarClick, dimmed }: {
   )
 }
 
-export default function SolarSystem({ onPlanetClick, onMoonClick, onStarHover, onStarClick, activePlanet }: Props) {
+export default function SolarSystem({ onPlanetClick, onMoonClick, onSunClick, onStarHover, onStarClick, activePlanet }: Props) {
   return (
     <>
       <Skybox />
       <ambientLight intensity={0.15} />
-      <Sun />
+      <Sun onClick={onSunClick} />
       {solarSystem.planets.map((planet) => (
         <group key={planet.id}>
           <Planet config={planet} onClick={onPlanetClick} onMoonClick={onMoonClick} />

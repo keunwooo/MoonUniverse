@@ -20,6 +20,7 @@ import geometryData from './data/problems/geometry.json'
 import functionsData from './data/problems/functions.json'
 import calculusData from './data/problems/calculus.json'
 import probabilityData from './data/problems/probability.json'
+import finalData from './data/problems/final.json'
 
 const SUBJECT_PROBLEMS: Record<string, Problem[]> = {
   algebra: algebraData.problems as Problem[],
@@ -86,6 +87,16 @@ export default function App() {
     }
   }, [solved, setCurrentProblem, handlePlanetSelect])
 
+  const handleSunClick = useCallback((unlocked: boolean) => {
+    if (!unlocked) return
+    // Find first unsolved final challenge problem
+    const finalProblems = finalData.problems as Problem[]
+    const firstUnsolved = finalProblems.find(p => !solved[p.id]?.correct)
+    if (firstUnsolved) {
+      setCurrentProblem(firstUnsolved)
+    }
+  }, [solved, setCurrentProblem])
+
   const handleFocusStar = useCallback((problem: Problem) => {
     const prefix = problem.id.slice(0, 3).toUpperCase()
     const subjectId = PREFIX_MAP[prefix] ?? 'algebra'
@@ -102,6 +113,7 @@ export default function App() {
         <SolarSystem
           onPlanetClick={handlePlanetSelect}
           onMoonClick={handleMoonClick}
+          onSunClick={handleSunClick}
           onStarHover={setHoveredProblem}
           onStarClick={setCurrentProblem}
           activePlanet={activePlanet}
