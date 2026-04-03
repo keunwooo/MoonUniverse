@@ -10,6 +10,8 @@ import NextStarHint from './components/ui/NextStarHint'
 import { useProblemStore } from './stores/useProblemStore'
 import { useGameStore } from './stores/useGameStore'
 import { solarSystem } from './data/solar-system'
+import { getStarPosition } from './hooks/useStarPositions'
+import { PREFIX_MAP } from './utils/planet-lookup'
 import type { Problem } from './types'
 
 import algebraData from './data/problems/algebra.json'
@@ -69,10 +71,19 @@ export default function App() {
     if (firstUnsolved) {
       setCurrentProblem(firstUnsolved)
     } else {
-      // All tutorials done — fly to planet
       handlePlanetSelect(planetId)
     }
   }, [solved, setCurrentProblem, handlePlanetSelect])
+
+  const handleFocusStar = useCallback((problem: Problem) => {
+    const prefix = problem.id.slice(0, 3).toUpperCase()
+    const subjectId = PREFIX_MAP[prefix] ?? 'algebra'
+    const planet = solarSystem.planets.find(p => p.id === subjectId)
+    if (!planet) return
+    setActivePlanet(subjectId)
+    const pos = getStarPosition(problem, planet)
+    setCameraTarget(pos)
+  }, [])
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -95,6 +106,7 @@ export default function App() {
       <NextStarHint
         activePlanet={activePlanet}
         onNavigate={(problem) => setCurrentProblem(problem)}
+        onFocus={handleFocusStar}
       />
     </div>
   )

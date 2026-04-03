@@ -25,9 +25,10 @@ const TIER_KO: Record<string, string> = {
 interface Props {
   activePlanet: string | null
   onNavigate: (problem: Problem) => void
+  onFocus: (problem: Problem) => void
 }
 
-export default function NextStarHint({ activePlanet, onNavigate }: Props) {
+export default function NextStarHint({ activePlanet, onNavigate, onFocus }: Props) {
   const solved = useGameStore((s) => s.progress.solved)
   const unlocked = useGameStore((s) => s.progress.unlocked)
 
@@ -60,35 +61,61 @@ export default function NextStarHint({ activePlanet, onNavigate }: Props) {
       zIndex: 15,
       pointerEvents: 'auto',
     }}>
-      <button
-        onClick={() => onNavigate(nextProblem)}
-        style={{
-          background: 'rgba(15,23,42,0.9)',
-          border: `1px solid ${planet.color}66`,
-          borderRadius: '12px',
-          padding: '10px 20px',
-          color: '#f1f5f9',
-          fontSize: '0.9rem',
-          cursor: 'pointer',
-          backdropFilter: 'blur(10px)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          boxShadow: `0 0 20px ${planet.color}22`,
-          transition: 'all 0.2s',
-        }}
-      >
+      <div style={{
+        background: 'rgba(15,23,42,0.9)',
+        border: `1px solid ${planet.color}66`,
+        borderRadius: '12px',
+        padding: '10px 16px',
+        backdropFilter: 'blur(10px)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        boxShadow: `0 0 20px ${planet.color}22`,
+      }}>
         <span style={{ fontSize: '1.2rem' }}>⭐</span>
         <div style={{ textAlign: 'left' }}>
           <div style={{ fontSize: '0.75rem', color: planet.color, fontWeight: 600 }}>
             다음 추천 문제
           </div>
-          <div style={{ fontSize: '0.85rem' }}>
+          <div style={{ fontSize: '0.85rem', color: '#f1f5f9' }}>
             {nextProblem.title} · {TIER_KO[nextProblem.tier]}
           </div>
         </div>
-        <span style={{ color: '#60a5fa', fontSize: '0.85rem' }}>→</span>
-      </button>
+        <div style={{ display: 'flex', gap: '6px', marginLeft: '4px' }}>
+          <button
+            onClick={() => onFocus(nextProblem)}
+            title="별 위치로 이동"
+            style={{
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '6px',
+              padding: '5px 10px',
+              color: '#94a3b8',
+              fontSize: '0.8rem',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            🔍 초점
+          </button>
+          <button
+            onClick={() => onNavigate(nextProblem)}
+            style={{
+              background: `linear-gradient(135deg, ${planet.color}, ${planet.color}cc)`,
+              border: 'none',
+              borderRadius: '6px',
+              padding: '5px 12px',
+              color: '#fff',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            풀기 →
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

@@ -19,7 +19,9 @@ export default function CameraController({ target, onArrived }: Props) {
     if (target) {
       const [x, y, z] = target
       targetLookAt.current.set(x, y, z)
-      targetPos.current.set(x + 5, y + 8, z + 10)
+      // Position camera offset from target for a good viewing angle
+      const dist = Math.sqrt(x * x + z * z) * 0.3 + 8
+      targetPos.current.set(x + dist * 0.4, y + dist * 0.6, z + dist * 0.7)
       isAnimating.current = true
     } else {
       targetPos.current.set(0, 30, 50)
@@ -31,8 +33,8 @@ export default function CameraController({ target, onArrived }: Props) {
   useFrame(() => {
     if (!isAnimating.current || !controlsRef.current) return
 
-    camera.position.lerp(targetPos.current, 0.03)
-    controlsRef.current.target.lerp(targetLookAt.current, 0.03)
+    camera.position.lerp(targetPos.current, 0.04)
+    controlsRef.current.target.lerp(targetLookAt.current, 0.04)
     controlsRef.current.update()
 
     if (camera.position.distanceTo(targetPos.current) < 0.1) {
@@ -44,9 +46,12 @@ export default function CameraController({ target, onArrived }: Props) {
   return (
     <OrbitControls
       ref={controlsRef}
-      enablePan={false}
-      minDistance={5}
-      maxDistance={100}
+      enablePan={true}
+      panSpeed={0.8}
+      minDistance={3}
+      maxDistance={120}
+      enableDamping
+      dampingFactor={0.08}
     />
   )
 }
