@@ -4,6 +4,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import SolarSystem from './components/3d/SolarSystem'
 import CameraController from './components/3d/CameraController'
 import HUD from './components/ui/HUD'
+import ProblemPreview from './components/ui/ProblemPreview'
 import { useProblemStore } from './stores/useProblemStore'
 import { solarSystem } from './data/solar-system'
 
@@ -35,6 +36,7 @@ export default function App() {
         </EffectComposer>
       </Canvas>
       <HUD activePlanet={activePlanet} onPlanetSelect={handlePlanetSelect} />
+      <ProblemPreview />
     </div>
   )
 }
