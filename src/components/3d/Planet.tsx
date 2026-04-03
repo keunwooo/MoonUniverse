@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import type { Group } from 'three'
 import type { PlanetConfig } from '../../types'
 import Moon from './Moon'
+import { getPlanetTexture } from '../../utils/procedural-textures'
 
 interface Props {
   config: PlanetConfig
@@ -15,6 +16,8 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
   const groupRef = useRef<Group>(null)
   const [hovered, setHovered] = useState(false)
   const angleRef = useRef(Math.random() * Math.PI * 2)
+
+  const texture = useMemo(() => getPlanetTexture(config.id), [config.id])
 
   useFrame((_, delta) => {
     angleRef.current += delta * (0.1 / config.orbitRadius)
@@ -41,9 +44,9 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
         >
           <sphereGeometry args={[config.size, 32, 32]} />
           <meshStandardMaterial
-            color={config.color}
+            map={texture}
             emissive={config.color}
-            emissiveIntensity={hovered ? 0.8 : 0.3}
+            emissiveIntensity={hovered ? 0.4 : 0.1}
           />
         </mesh>
         {/* Moon orbiting this planet */}

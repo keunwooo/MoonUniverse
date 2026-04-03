@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import type { Mesh } from 'three'
 import { useGameStore } from '../../stores/useGameStore'
+import { getPlanetTexture } from '../../utils/procedural-textures'
 import type { Problem } from '../../types'
 
 import algebraData from '../../data/problems/algebra.json'
@@ -41,6 +42,7 @@ export default function Moon({ parentPosition, color, name, subjectId, onClick }
   const tutorialCount = tutorials.length
   const solvedTutorials = tutorials.filter(p => solved[p.id]?.correct).length
   const allComplete = tutorialCount > 0 && solvedTutorials >= tutorialCount
+  const moonTexture = useMemo(() => getPlanetTexture('moon'), [])
 
   useFrame((_, delta) => {
     angleRef.current += delta * 1.5
@@ -75,9 +77,9 @@ export default function Moon({ parentPosition, color, name, subjectId, onClick }
       >
         <sphereGeometry args={[0.5, 16, 16]} />
         <meshStandardMaterial
-          color={allComplete ? '#fbbf24' : '#c4b5a0'}
+          map={moonTexture}
           emissive={allComplete ? '#fbbf24' : color}
-          emissiveIntensity={hovered ? 0.8 : allComplete ? 0.5 : 0.3}
+          emissiveIntensity={hovered ? 0.5 : allComplete ? 0.3 : 0.15}
         />
         {hovered && (
           <Html center zIndexRange={[50, 0]}>

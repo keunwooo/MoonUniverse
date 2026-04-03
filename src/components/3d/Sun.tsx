@@ -1,9 +1,11 @@
-import { useRef } from 'react'
+import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import type { Mesh } from 'three'
+import { getPlanetTexture } from '../../utils/procedural-textures'
 
 export default function Sun() {
   const ref = useRef<Mesh>(null)
+  const texture = useMemo(() => getPlanetTexture('sun'), [])
 
   useFrame((_, delta) => {
     if (ref.current) {
@@ -15,11 +17,12 @@ export default function Sun() {
     <mesh ref={ref} position={[0, 0, 0]}>
       <sphereGeometry args={[3, 64, 64]} />
       <meshStandardMaterial
-        color="#fbbf24"
-        emissive="#fbbf24"
-        emissiveIntensity={3}
+        map={texture}
+        emissiveMap={texture}
+        emissive="#ff8800"
+        emissiveIntensity={2.5}
       />
-      <pointLight color="#fbbf24" intensity={100} distance={200} />
+      <pointLight color="#ffd080" intensity={100} distance={200} />
     </mesh>
   )
 }
