@@ -8,9 +8,10 @@ import Moon from './Moon'
 interface Props {
   config: PlanetConfig
   onClick: (planetId: string) => void
+  onMoonClick: (planetId: string) => void
 }
 
-export default function Planet({ config, onClick }: Props) {
+export default function Planet({ config, onClick, onMoonClick }: Props) {
   const groupRef = useRef<Group>(null)
   const [hovered, setHovered] = useState(false)
   const angleRef = useRef(Math.random() * Math.PI * 2)
@@ -46,7 +47,14 @@ export default function Planet({ config, onClick }: Props) {
           />
         </mesh>
         {/* Moon orbiting this planet */}
-        <Moon parentPosition={[0, 0, 0]} color={config.color} name={config.moon.name} />
+        <Moon
+          parentPosition={[0, 0, 0]}
+          color={config.color}
+          name={config.moon.name}
+          tutorialCount={config.moon.tutorialProblems}
+          subjectId={config.id}
+          onClick={() => onMoonClick(config.id)}
+        />
         {hovered && (
           <Html center zIndexRange={[50, 0]}>
             <div style={{

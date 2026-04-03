@@ -8,13 +8,30 @@ import ProblemPreview from './components/ui/ProblemPreview'
 import ProblemSolver from './components/ui/ProblemSolver'
 import NextStarHint from './components/ui/NextStarHint'
 import { useProblemStore } from './stores/useProblemStore'
+import { useGameStore } from './stores/useGameStore'
 import { solarSystem } from './data/solar-system'
+import type { Problem } from './types'
+
+import algebraData from './data/problems/algebra.json'
+import geometryData from './data/problems/geometry.json'
+import functionsData from './data/problems/functions.json'
+import calculusData from './data/problems/calculus.json'
+import probabilityData from './data/problems/probability.json'
+
+const SUBJECT_PROBLEMS: Record<string, Problem[]> = {
+  algebra: algebraData.problems as Problem[],
+  geometry: geometryData.problems as Problem[],
+  functions: functionsData.problems as Problem[],
+  calculus: calculusData.problems as Problem[],
+  probability: probabilityData.problems as Problem[],
+}
 
 export default function App() {
   const setHoveredProblem = useProblemStore((s) => s.setHoveredProblem)
   const setCurrentProblem = useProblemStore((s) => s.setCurrentProblem)
   const currentProblem = useProblemStore((s) => s.currentProblem)
   const closeProblem = useProblemStore((s) => s.closeProblem)
+  const solved = useGameStore((s) => s.progress.solved)
   const [cameraTarget, setCameraTarget] = useState<[number, number, number] | null>(null)
   const [activePlanet, setActivePlanet] = useState<string | null>(null)
 
@@ -46,11 +63,23 @@ export default function App() {
     }
   }, [])
 
+  const handleMoonClick = useCallback((planetId: string) => {
+    const problems = SUBJECT_PROBLEMS[planetId] ?? []
+    const firstUnsolved = problems.find(p => p.tier === 'tutorial' && !solved[p.id]?.correct)
+    if (firstUnsolved) {
+      setCurrentProblem(firstUnsolved)
+    } else {
+      // All tutorials done — fly to planet
+      handlePlanetSelect(planetId)
+    }
+  }, [solved, setCurrentProblem, handlePlanetSelect])
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Canvas camera={{ position: [0, 30, 50], fov: 60 }}>
         <SolarSystem
           onPlanetClick={handlePlanetSelect}
+          onMoonClick={handleMoonClick}
           onStarHover={setHoveredProblem}
           onStarClick={setCurrentProblem}
           activePlanet={activePlanet}
