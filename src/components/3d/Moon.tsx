@@ -42,7 +42,7 @@ export default function Moon({ parentPosition, color, name, subjectId, onClick }
   const tutorialCount = tutorials.length
   const solvedTutorials = tutorials.filter(p => solved[p.id]?.correct).length
   const allComplete = tutorialCount > 0 && solvedTutorials >= tutorialCount
-  const moonTexture = useTexture('/textures/moon.jpg')
+  const moonTexture = useTexture(`${import.meta.env.BASE_URL}textures/moon.jpg`)
 
   useFrame((_, delta) => {
     angleRef.current += delta * 1.5

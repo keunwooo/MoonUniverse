@@ -16,15 +16,15 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
   const [hovered, setHovered] = useState(false)
   const angleRef = useRef(Math.random() * Math.PI * 2)
 
-  // Map each subject to a real planet texture
+  const base = import.meta.env.BASE_URL
   const TEXTURE_MAP: Record<string, string> = {
-    algebra: '/textures/mercury.jpg',
-    geometry: '/textures/earth.jpg',
-    functions: '/textures/mars.jpg',
-    calculus: '/textures/jupiter.jpg',
-    probability: '/textures/saturn.jpg',
+    algebra: `${base}textures/mercury.jpg`,
+    geometry: `${base}textures/earth.jpg`,
+    functions: `${base}textures/mars.jpg`,
+    calculus: `${base}textures/jupiter.jpg`,
+    probability: `${base}textures/saturn.jpg`,
   }
-  const texture = useTexture(TEXTURE_MAP[config.id] ?? '/textures/mercury.jpg')
+  const texture = useTexture(TEXTURE_MAP[config.id] ?? `${base}textures/mercury.jpg`)
 
   useFrame((_, delta) => {
     angleRef.current += delta * (0.1 / config.orbitRadius)

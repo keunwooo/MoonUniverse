@@ -6,7 +6,7 @@ import type { Mesh } from 'three'
 
 function Moon3D() {
   const ref = useRef<Mesh>(null)
-  const texture = useTexture('/textures/moon.jpg')
+  const texture = useTexture(`${import.meta.env.BASE_URL}textures/moon.jpg`)
 
   useFrame((_, delta) => {
     if (ref.current) {

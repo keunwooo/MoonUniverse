@@ -5,7 +5,7 @@ import type { Mesh } from 'three'
 
 export default function Sun() {
   const ref = useRef<Mesh>(null)
-  const texture = useTexture('/textures/sun.jpg')
+  const texture = useTexture(`${import.meta.env.BASE_URL}textures/sun.jpg`)
 
   useFrame((_, delta) => {
     if (ref.current) {
