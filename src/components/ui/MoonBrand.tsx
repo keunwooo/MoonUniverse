@@ -108,14 +108,15 @@ export default function MoonBrand() {
           </span>
         </div>
         <motion.div
-          animate={{ opacity: hovered ? 1 : 0, height: hovered ? '14px' : '0px' }}
+          animate={{ opacity: hovered ? 1 : 0, height: hovered ? '20px' : '0px' }}
           transition={{ duration: 0.25 }}
           style={{ overflow: 'hidden' }}
         >
           <span style={{
             color: '#fbbf24',
-            fontSize: '10px',
+            fontSize: '11px',
             letterSpacing: '1px',
+            lineHeight: '20px',
           }}>
             for 문아현 ✨
           </span>
