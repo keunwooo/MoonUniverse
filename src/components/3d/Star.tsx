@@ -145,24 +145,25 @@ export default function Star({ problem, position, onHover, onClick }: Props) {
 
       {/* Locked: hover tooltip */}
       {isLocked && hovered && (
-        <Html center distanceFactor={12}>
+        <Html center zIndexRange={[50, 0]}>
           <div style={{
             background: 'rgba(15,23,42,0.95)',
             border: '1px solid rgba(99,102,241,0.4)',
             borderRadius: '10px',
-            padding: '8px 14px',
+            padding: '10px 16px',
             color: '#a5b4fc',
-            fontSize: '13px',
+            fontSize: '14px',
             whiteSpace: 'nowrap',
             pointerEvents: 'none',
             textAlign: 'center',
             backdropFilter: 'blur(8px)',
+            boxShadow: '0 0 12px rgba(99,102,241,0.3)',
           }}>
-            <div style={{ fontSize: '16px', marginBottom: '4px' }}>🔒</div>
+            <div style={{ fontSize: '18px', marginBottom: '4px' }}>🔒</div>
             <div style={{ fontWeight: 600, marginBottom: '2px' }}>
               {TIER_KO[problem.tier]} 단계
             </div>
-            <div style={{ fontSize: '11px', color: '#818cf8' }}>
+            <div style={{ fontSize: '12px', color: '#818cf8' }}>
               {requiredTierKo} 티어를 먼저 완료하세요
             </div>
           </div>

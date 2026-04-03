@@ -46,7 +46,7 @@ export default function Planet({ config, onClick }: Props) {
           />
         </mesh>
         {/* Moon orbiting this planet */}
-        <Moon parentPosition={[0, 0, 0]} color={config.color} />
+        <Moon parentPosition={[0, 0, 0]} color={config.color} name={config.moon.name} />
         {hovered && (
           <Html center zIndexRange={[50, 0]}>
             <div style={{
