@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import SolarSystem from './components/3d/SolarSystem'
@@ -12,8 +12,25 @@ import { solarSystem } from './data/solar-system'
 export default function App() {
   const setHoveredProblem = useProblemStore((s) => s.setHoveredProblem)
   const setCurrentProblem = useProblemStore((s) => s.setCurrentProblem)
+  const currentProblem = useProblemStore((s) => s.currentProblem)
+  const closeProblem = useProblemStore((s) => s.closeProblem)
   const [cameraTarget, setCameraTarget] = useState<[number, number, number] | null>(null)
   const [activePlanet, setActivePlanet] = useState<string | null>(null)
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (currentProblem) {
+          closeProblem()
+        } else if (cameraTarget) {
+          setCameraTarget(null)
+          setActivePlanet(null)
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentProblem, closeProblem, cameraTarget])
 
   const handlePlanetSelect = useCallback((planetId: string) => {
     setActivePlanet(planetId)

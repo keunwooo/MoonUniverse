@@ -30,7 +30,7 @@ interface GameStore {
 
 export const useGameStore = create<GameStore>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       progress: { ...DEFAULT_PROGRESS },
 
       solveProblem: (id, correct, baseXp, time) => {

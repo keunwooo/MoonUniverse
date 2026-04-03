@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import type { Problem, Choice, SolutionStep, PlanetConfig, SolarSystemConfig, UserProgress, SolvedRecord, Tier, Subject, InputType } from './index'
+import type { Problem, UserProgress } from './index'
 
 describe('types', () => {
   it('Problem type accepts valid problem', () => {
