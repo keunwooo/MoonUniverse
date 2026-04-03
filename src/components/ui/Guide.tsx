@@ -135,7 +135,7 @@ function Section({ title, color, children }: { title: string; color: string; chi
         marginBottom: '6px',
       }}>
         <div style={{ width: '3px', height: '12px', background: color, borderRadius: '2px' }} />
-        <span style={{ color, fontSize: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>
+        <span style={{ color, fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px' }}>
           {title}
         </span>
       </div>
@@ -154,13 +154,13 @@ function Row({ icon, label, value }: { icon: string; label: string; value: strin
   return (
     <div style={{
       display: 'flex', alignItems: 'center',
-      padding: '8px 12px',
+      padding: '11px 14px',
       borderBottom: '1px solid rgba(15,23,42,0.8)',
-      gap: '8px',
+      gap: '10px',
     }}>
-      <span style={{ fontSize: '14px', width: '20px', textAlign: 'center', flexShrink: 0 }}>{icon}</span>
-      <span style={{ color: '#e2e8f0', fontSize: '12px', fontWeight: 600, width: '90px', flexShrink: 0 }}>{label}</span>
-      <span style={{ color: '#94a3b8', fontSize: '12px' }}>{value}</span>
+      <span style={{ fontSize: '16px', width: '22px', textAlign: 'center', flexShrink: 0 }}>{icon}</span>
+      <span style={{ color: '#e2e8f0', fontSize: '13px', fontWeight: 600, width: '95px', flexShrink: 0 }}>{label}</span>
+      <span style={{ color: '#94a3b8', fontSize: '13px' }}>{value}</span>
     </div>
   )
 }
