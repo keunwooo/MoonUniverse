@@ -60,13 +60,12 @@ export default function App() {
     }
     setActivePlanet(planetId)
     if (position) {
-      // Use actual planet position from 3D scene
       setCameraTarget(position)
     } else {
-      // Fallback for SubjectNav clicks (no 3D position available)
+      // SubjectNav click: target a point on the orbit ring
       const planet = solarSystem.planets.find(p => p.id === planetId)
       if (planet) {
-        setCameraTarget([planet.orbitRadius * 0.7, 2, planet.orbitRadius * 0.7])
+        setCameraTarget([planet.orbitRadius, 0, 0])
       }
     }
   }, [])
