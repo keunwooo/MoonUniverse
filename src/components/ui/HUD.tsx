@@ -20,7 +20,7 @@ export default function HUD({ activePlanet, onPlanetSelect }: Props) {
     }}>
       <MoonBrand />
 
-      <div style={{ position: 'absolute', top: '1rem', left: '1rem', pointerEvents: 'auto' }}>
+      <div style={{ position: 'absolute', top: '1rem', left: '150px', pointerEvents: 'auto' }}>
         <SubjectNav activePlanet={activePlanet} onPlanetSelect={onPlanetSelect} />
       </div>
       <div style={{ position: 'absolute', top: '1rem', right: '1rem', pointerEvents: 'auto' }}>
