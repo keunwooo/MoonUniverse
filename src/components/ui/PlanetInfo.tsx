@@ -8,6 +8,14 @@ interface Props {
 
 const TIERS: Tier[] = ['tutorial', 'easy', 'medium', 'hard', 'expert']
 
+const TIER_KO: Record<Tier, string> = {
+  tutorial: '입문',
+  easy: '기초',
+  medium: '보통',
+  hard: '심화',
+  expert: '전문가',
+}
+
 export default function PlanetInfo({ planetId }: Props) {
   const planet = solarSystem.planets.find(p => p.id === planetId)
   const unlocked = useGameStore((s) => s.progress.unlocked)
@@ -24,27 +32,27 @@ export default function PlanetInfo({ planetId }: Props) {
       borderRadius: '12px',
       padding: '1rem 1.2rem',
       backdropFilter: 'blur(10px)',
-      width: '220px',
+      width: '260px',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.7rem' }}>
         <div style={{
           width: '18px', height: '18px', borderRadius: '50%',
           background: planet.color,
         }} />
-        <span style={{ color: planet.color, fontWeight: 700, fontSize: '0.9rem' }}>{planet.name}</span>
+        <span style={{ color: planet.color, fontWeight: 700, fontSize: '1rem' }}>{planet.name}</span>
       </div>
       <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
         {TIERS.map((tier, i) => {
           const isUnlocked = i <= currentTierIndex
           return (
             <span key={tier} style={{
-              fontSize: '0.6rem',
+              fontSize: '0.8rem',
               color: isUnlocked ? '#4ade80' : '#64748b',
               background: isUnlocked ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.05)',
-              padding: '2px 6px',
+              padding: '4px 10px',
               borderRadius: '4px',
             }}>
-              {tier} {isUnlocked ? '✓' : '🔒'}
+              {TIER_KO[tier]} {isUnlocked ? '✓' : '🔒'}
             </span>
           )
         })}

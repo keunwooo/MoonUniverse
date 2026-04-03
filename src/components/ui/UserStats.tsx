@@ -30,9 +30,9 @@ export default function UserStats() {
         <div style={{ color: '#94a3b8', fontSize: '0.7rem' }}>{progress.xp} XP</div>
       </div>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <span style={{ color: '#4ade80', fontSize: '0.7rem' }}>✓ {progress.stats.totalSolved}</span>
-        <span style={{ color: '#f87171', fontSize: '0.7rem' }}>✗ {progress.stats.totalWrong}</span>
-        <span style={{ color: '#60a5fa', fontSize: '0.7rem' }}>🔥 {progress.streak}</span>
+        <span style={{ color: '#4ade80', fontSize: '0.7rem' }}>정답 {progress.stats.totalSolved}</span>
+        <span style={{ color: '#f87171', fontSize: '0.7rem' }}>오답 {progress.stats.totalWrong}</span>
+        <span style={{ color: '#60a5fa', fontSize: '0.7rem' }}>연속 {progress.streak}</span>
       </div>
     </div>
   )

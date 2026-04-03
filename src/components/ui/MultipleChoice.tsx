@@ -54,7 +54,7 @@ export default function MultipleChoice({ choices, onSubmit, disabled }: Props) {
             fontSize: '1rem',
           }}
         >
-          Submit Answer
+          정답 제출
         </button>
       </div>
     </div>

@@ -24,7 +24,7 @@ export default function StepSolution({ steps }: Props) {
         color: '#94a3b8', fontSize: '0.8rem', textTransform: 'uppercase',
         letterSpacing: '0.05em', marginBottom: '1rem',
       }}>
-        Step-by-step Solution
+        단계별 풀이
       </div>
       <div style={{ borderLeft: '2px solid rgba(96,165,250,0.3)', paddingLeft: '1.5rem' }}>
         <AnimatePresence>
@@ -42,7 +42,7 @@ export default function StepSolution({ steps }: Props) {
                 background: i === steps.length - 1 ? '#4ade80' : '#3b82f6',
               }} />
               <div style={{ color: '#60a5fa', fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.3rem' }}>
-                Step {step.step}: {step.title}
+                풀이 {step.step}: {step.title}
               </div>
               <div style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>{step.text}</div>
               {step.latex && (

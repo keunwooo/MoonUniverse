@@ -1,14 +1,25 @@
 import { useProblemStore } from '../../stores/useProblemStore'
-import { solarSystem } from '../../data/solar-system'
+import { getPlanetForProblem } from '../../utils/planet-lookup'
+
+const TIER_KO: Record<string, string> = {
+  tutorial: '입문',
+  easy: '기초',
+  medium: '보통',
+  hard: '심화',
+  expert: '전문가',
+}
+
+const INPUT_TYPE_KO: Record<string, string> = {
+  multiple: '객관식',
+  short: '단답형',
+  formula: '수식 입력',
+}
 
 export default function ProblemPreview() {
   const problem = useProblemStore((s) => s.hoveredProblem)
   if (!problem) return null
 
-  const subject = problem.id.slice(0, 3)
-  const planet = solarSystem.planets.find(p =>
-    p.id.toUpperCase().startsWith(subject)
-  ) ?? solarSystem.planets[0]
+  const planet = getPlanetForProblem(problem.id)
 
   return (
     <div style={{
@@ -51,10 +62,10 @@ export default function ProblemPreview() {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ color: '#64748b', fontSize: '0.7rem' }}>
-          {problem.tier} · {problem.inputType}
+          {TIER_KO[problem.tier] ?? problem.tier} · {INPUT_TYPE_KO[problem.inputType] ?? problem.inputType}
         </span>
         <span style={{ color: '#60a5fa', fontSize: '0.75rem' }}>
-          Click to solve →
+          클릭하여 풀기 →
         </span>
       </div>
     </div>

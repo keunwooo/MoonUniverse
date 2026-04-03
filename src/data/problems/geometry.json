@@ -3,155 +3,559 @@
   "problems": [
     {
       "id": "GEO-T01",
-      "title": "Triangle Angles",
+      "title": "삼각형의 내각의 합",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "A triangle has angles 60° and 80°. What is the third angle?",
+      "question": "삼각형의 두 내각이 50°와 70°일 때, 나머지 한 각의 크기는?",
+      "questionLatex": "\\angle A = 50^\\circ,\\; \\angle B = 70^\\circ,\\; \\angle C = ?",
       "choices": [
+        { "label": "A", "text": "50°" },
+        { "label": "B", "text": "60°", "correct": true },
+        { "label": "C", "text": "70°" },
+        { "label": "D", "text": "80°" }
+      ],
+      "answer": "B",
+      "solution": [
         {
-          "label": "A",
-          "text": "40°",
-          "correct": true
+          "step": 1,
+          "title": "삼각형 내각의 합 공식",
+          "text": "삼각형의 세 내각의 합은 항상 180°입니다.",
+          "latex": "\\angle A + \\angle B + \\angle C = 180^\\circ"
         },
         {
-          "label": "B",
-          "text": "50°"
-        },
-        {
-          "label": "C",
-          "text": "60°"
-        },
-        {
-          "label": "D",
-          "text": "30°"
+          "step": 2,
+          "title": "나머지 각 계산",
+          "text": "50° + 70° + ∠C = 180° 이므로",
+          "latex": "\\angle C = 180^\\circ - 50^\\circ - 70^\\circ = 60^\\circ"
         }
+      ],
+      "xp": 10,
+      "tags": ["삼각형", "내각", "기초"]
+    },
+    {
+      "id": "GEO-T02",
+      "title": "직사각형의 넓이",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "가로 8cm, 세로 5cm인 직사각형의 넓이는?",
+      "questionLatex": "\\text{가로} = 8\\text{cm},\\; \\text{세로} = 5\\text{cm}",
+      "choices": [
+        { "label": "A", "text": "26cm²" },
+        { "label": "B", "text": "40cm²", "correct": true },
+        { "label": "C", "text": "35cm²" },
+        { "label": "D", "text": "13cm²" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "직사각형 넓이 공식",
+          "text": "넓이 = 가로 × 세로",
+          "latex": "S = a \\times b"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "S = 8 × 5 = 40cm²",
+          "latex": "S = 8 \\times 5 = 40\\;\\text{cm}^2"
+        }
+      ],
+      "xp": 10,
+      "tags": ["직사각형", "넓이", "기초"]
+    },
+    {
+      "id": "GEO-T03",
+      "title": "원의 둘레",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "반지름이 7cm인 원의 둘레는? (π ≈ 3.14)",
+      "questionLatex": "r = 7\\text{cm},\\; \\pi \\approx 3.14",
+      "choices": [
+        { "label": "A", "text": "21.98cm" },
+        { "label": "B", "text": "43.96cm", "correct": true },
+        { "label": "C", "text": "49cm" },
+        { "label": "D", "text": "153.86cm" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "원의 둘레 공식",
+          "text": "원의 둘레 = 2πr",
+          "latex": "C = 2\\pi r"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "C = 2 × 3.14 × 7 = 43.96cm",
+          "latex": "C = 2 \\times 3.14 \\times 7 = 43.96\\;\\text{cm}"
+        }
+      ],
+      "xp": 10,
+      "tags": ["원", "둘레", "기초"]
+    },
+    {
+      "id": "GEO-T04",
+      "title": "피타고라스 정리 기초",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "직각삼각형에서 두 직각변의 길이가 3과 4일 때, 빗변의 길이는?",
+      "questionLatex": "a = 3,\\; b = 4,\\; c = ?",
+      "choices": [
+        { "label": "A", "text": "5", "correct": true },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "√7" }
       ],
       "answer": "A",
       "solution": [
         {
           "step": 1,
-          "title": "Sum of angles",
-          "text": "Triangle angles sum to 180°",
-          "latex": "\\angle_1 + \\angle_2 + \\angle_3 = 180°"
+          "title": "피타고라스 정리 적용",
+          "text": "빗변² = 직각변₁² + 직각변₂²",
+          "latex": "c^2 = a^2 + b^2 = 3^2 + 4^2 = 9 + 16 = 25"
         },
         {
           "step": 2,
-          "title": "Calculate",
-          "text": "180 - 60 - 80 = 40",
-          "latex": "180° - 60° - 80° = 40°"
+          "title": "제곱근 계산",
+          "text": "c = √25 = 5",
+          "latex": "c = \\sqrt{25} = 5"
         }
       ],
       "xp": 10,
-      "tags": [
-        "triangle",
-        "angles"
-      ]
+      "tags": ["피타고라스", "직각삼각형", "기초"]
     },
     {
-      "id": "GEO-T02",
-      "title": "Rectangle Area",
-      "difficulty": 1,
-      "tier": "tutorial",
+      "id": "GEO-E01",
+      "title": "삼각형의 넓이",
+      "difficulty": 2,
+      "tier": "easy",
       "inputType": "multiple",
-      "question": "What is the area of a rectangle with width 5 and height 8?",
+      "question": "밑변이 10cm, 높이가 6cm인 삼각형의 넓이는?",
+      "questionLatex": "\\text{밑변} = 10\\text{cm},\\; \\text{높이} = 6\\text{cm}",
       "choices": [
+        { "label": "A", "text": "30cm²", "correct": true },
+        { "label": "B", "text": "60cm²" },
+        { "label": "C", "text": "48cm²" },
+        { "label": "D", "text": "16cm²" }
+      ],
+      "answer": "A",
+      "solution": [
         {
-          "label": "A",
-          "text": "13"
+          "step": 1,
+          "title": "삼각형 넓이 공식",
+          "text": "삼각형의 넓이 = (밑변 × 높이) ÷ 2",
+          "latex": "S = \\frac{1}{2} \\times \\text{밑변} \\times \\text{높이}"
         },
         {
-          "label": "B",
-          "text": "26"
-        },
-        {
-          "label": "C",
-          "text": "40",
-          "correct": true
-        },
-        {
-          "label": "D",
-          "text": "45"
+          "step": 2,
+          "title": "값 대입",
+          "text": "S = (10 × 6) ÷ 2 = 30cm²",
+          "latex": "S = \\frac{1}{2} \\times 10 \\times 6 = 30\\;\\text{cm}^2"
         }
+      ],
+      "xp": 15,
+      "tags": ["삼각형", "넓이"]
+    },
+    {
+      "id": "GEO-E02",
+      "title": "원의 넓이",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "반지름이 5cm인 원의 넓이는? (π를 사용하여 나타내세요)",
+      "questionLatex": "r = 5\\text{cm}",
+      "choices": [
+        { "label": "A", "text": "10π cm²" },
+        { "label": "B", "text": "25π cm²", "correct": true },
+        { "label": "C", "text": "50π cm²" },
+        { "label": "D", "text": "5π cm²" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "원의 넓이 공식",
+          "text": "원의 넓이 = πr²",
+          "latex": "S = \\pi r^2"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "S = π × 5² = 25π cm²",
+          "latex": "S = \\pi \\times 5^2 = 25\\pi\\;\\text{cm}^2"
+        }
+      ],
+      "xp": 15,
+      "tags": ["원", "넓이"]
+    },
+    {
+      "id": "GEO-E03",
+      "title": "피타고라스 정리 응용",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "빗변이 13이고 한 직각변이 5인 직각삼각형에서 나머지 직각변의 길이는?",
+      "questionLatex": "c = 13,\\; a = 5,\\; b = ?",
+      "choices": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "11" },
+        { "label": "C", "text": "12", "correct": true },
+        { "label": "D", "text": "8" }
       ],
       "answer": "C",
       "solution": [
         {
           "step": 1,
-          "title": "Area formula",
-          "text": "Area = width × height",
-          "latex": "A = w \\times h"
+          "title": "피타고라스 정리 적용",
+          "text": "b² = c² - a² = 13² - 5²",
+          "latex": "b^2 = 13^2 - 5^2 = 169 - 25 = 144"
         },
         {
           "step": 2,
-          "title": "Calculate",
-          "text": "5 × 8 = 40",
-          "latex": "A = 5 \\times 8 = 40"
-        }
-      ],
-      "xp": 10,
-      "tags": [
-        "rectangle",
-        "area"
-      ]
-    },
-    {
-      "id": "GEO-E01",
-      "title": "Pythagorean Theorem",
-      "difficulty": 2,
-      "tier": "easy",
-      "inputType": "short",
-      "question": "A right triangle has legs 3 and 4. What is the hypotenuse?",
-      "questionLatex": "a^2 + b^2 = c^2",
-      "answer": "5",
-      "solution": [
-        {
-          "step": 1,
-          "title": "Apply theorem",
-          "text": "c² = 3² + 4²",
-          "latex": "c^2 = 9 + 16 = 25"
-        },
-        {
-          "step": 2,
-          "title": "Solve",
-          "text": "c = √25 = 5",
-          "latex": "c = \\sqrt{25} = 5"
+          "title": "제곱근 계산",
+          "text": "b = √144 = 12",
+          "latex": "b = \\sqrt{144} = 12"
         }
       ],
       "xp": 15,
-      "tags": [
-        "pythagorean",
-        "right-triangle"
-      ]
+      "tags": ["피타고라스", "직각삼각형"]
     },
     {
-      "id": "GEO-M01",
-      "title": "Circle Area",
-      "difficulty": 3,
-      "tier": "medium",
-      "inputType": "short",
-      "question": "What is the area of a circle with radius 7? (Round to nearest integer)",
-      "questionLatex": "A = \\pi r^2",
-      "answer": "154",
+      "id": "GEO-E04",
+      "title": "두 점 사이의 거리",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "좌표평면 위의 두 점 A(1, 2)와 B(4, 6) 사이의 거리는?",
+      "questionLatex": "A(1, 2),\\; B(4, 6)",
+      "choices": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "5", "correct": true },
+        { "label": "C", "text": "√34" },
+        { "label": "D", "text": "7" }
+      ],
+      "answer": "B",
       "solution": [
         {
           "step": 1,
-          "title": "Apply formula",
-          "text": "A = π × 7²",
-          "latex": "A = \\pi \\times 49"
+          "title": "거리 공식 적용",
+          "text": "두 점 사이의 거리 공식을 적용합니다.",
+          "latex": "d = \\sqrt{(4-1)^2 + (6-2)^2}"
         },
         {
           "step": 2,
-          "title": "Calculate",
-          "text": "A ≈ 153.94 ≈ 154",
-          "latex": "A \\approx 154"
+          "title": "계산",
+          "text": "d = √(9 + 16) = √25 = 5",
+          "latex": "d = \\sqrt{9 + 16} = \\sqrt{25} = 5"
+        }
+      ],
+      "xp": 15,
+      "tags": ["좌표기하", "두 점 사이의 거리"]
+    },
+    {
+      "id": "GEO-M01",
+      "title": "사인 법칙",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "삼각형 ABC에서 a = 6, ∠A = 30°, ∠B = 60°일 때 b의 값은?",
+      "questionLatex": "a = 6,\\; \\angle A = 30^\\circ,\\; \\angle B = 60^\\circ",
+      "choices": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "6√3", "correct": true },
+        { "label": "C", "text": "3√3" },
+        { "label": "D", "text": "12" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "사인 법칙 적용",
+          "text": "사인 법칙: a/sinA = b/sinB",
+          "latex": "\\frac{a}{\\sin A} = \\frac{b}{\\sin B}"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "6/sin30° = b/sin60°",
+          "latex": "\\frac{6}{\\frac{1}{2}} = \\frac{b}{\\frac{\\sqrt{3}}{2}}"
+        },
+        {
+          "step": 3,
+          "title": "계산",
+          "text": "b = 6 × (√3/2) / (1/2) = 6√3",
+          "latex": "b = \\frac{6 \\cdot \\frac{\\sqrt{3}}{2}}{\\frac{1}{2}} = 6\\sqrt{3}"
         }
       ],
       "xp": 20,
-      "tags": [
-        "circle",
-        "area"
-      ]
+      "tags": ["사인 법칙", "삼각형"]
+    },
+    {
+      "id": "GEO-M02",
+      "title": "코사인 법칙",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "삼각형에서 a = 5, b = 7, ∠C = 60°일 때, c²의 값은?",
+      "questionLatex": "a = 5,\\; b = 7,\\; \\angle C = 60^\\circ",
+      "choices": [
+        { "label": "A", "text": "c² = 39", "correct": true },
+        { "label": "B", "text": "c² = 49" },
+        { "label": "C", "text": "c² = 74" },
+        { "label": "D", "text": "c² = 25" }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "코사인 법칙 적용",
+          "text": "c² = a² + b² - 2ab·cosC",
+          "latex": "c^2 = a^2 + b^2 - 2ab\\cos C"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "c² = 25 + 49 - 2(5)(7)cos60° = 74 - 70 × (1/2)",
+          "latex": "c^2 = 25 + 49 - 2 \\cdot 5 \\cdot 7 \\cdot \\frac{1}{2} = 74 - 35 = 39"
+        }
+      ],
+      "xp": 20,
+      "tags": ["코사인 법칙", "삼각형"]
+    },
+    {
+      "id": "GEO-M03",
+      "title": "원의 현과 중심 거리",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "원의 중심 O에서 현 AB까지의 거리가 5이고, 반지름이 13일 때, 현 AB의 길이는?",
+      "questionLatex": "r = 13,\\; d = 5,\\; |AB| = ?",
+      "choices": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "24", "correct": true },
+        { "label": "C", "text": "18" },
+        { "label": "D", "text": "20" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "수선에 의한 이등분",
+          "text": "중심에서 현에 내린 수선은 현을 이등분하므로 직각삼각형을 이룹니다.",
+          "latex": "\\left(\\frac{|AB|}{2}\\right)^2 + 5^2 = 13^2"
+        },
+        {
+          "step": 2,
+          "title": "반현 계산",
+          "text": "(|AB|/2)² = 169 - 25 = 144 → |AB|/2 = 12",
+          "latex": "\\frac{|AB|}{2} = \\sqrt{169 - 25} = \\sqrt{144} = 12"
+        },
+        {
+          "step": 3,
+          "title": "현의 길이",
+          "text": "|AB| = 2 × 12 = 24",
+          "latex": "|AB| = 24"
+        }
+      ],
+      "xp": 20,
+      "tags": ["원", "현", "피타고라스"]
+    },
+    {
+      "id": "GEO-M04",
+      "title": "중점 공식",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "short",
+      "question": "두 점 A(2, 8)과 B(6, 4)의 중점 M의 y좌표를 구하세요.",
+      "questionLatex": "A(2, 8),\\; B(6, 4)",
+      "answer": "6",
+      "answerLatex": "y_M = 6",
+      "solution": [
+        {
+          "step": 1,
+          "title": "중점 공식",
+          "text": "중점의 y좌표 = (y₁ + y₂) / 2",
+          "latex": "y_M = \\frac{y_1 + y_2}{2} = \\frac{8 + 4}{2}"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "y_M = 12 / 2 = 6",
+          "latex": "y_M = 6"
+        }
+      ],
+      "xp": 25,
+      "tags": ["좌표기하", "중점"]
+    },
+    {
+      "id": "GEO-H01",
+      "title": "삼각형의 외접원 반지름",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "삼각형 ABC에서 a = 8, ∠A = 30°일 때, 외접원의 반지름 R을 구하세요.",
+      "questionLatex": "a = 8,\\; \\angle A = 30^\\circ",
+      "answer": "8",
+      "answerLatex": "R = 8",
+      "solution": [
+        {
+          "step": 1,
+          "title": "사인 법칙과 외접원",
+          "text": "사인 법칙에 의해 a/sinA = 2R",
+          "latex": "\\frac{a}{\\sin A} = 2R"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "2R = 8 / sin30° = 8 / (1/2) = 16",
+          "latex": "2R = \\frac{8}{\\sin 30^\\circ} = \\frac{8}{\\frac{1}{2}} = 16"
+        },
+        {
+          "step": 3,
+          "title": "R 계산",
+          "text": "R = 8",
+          "latex": "R = \\frac{16}{2} = 8"
+        }
+      ],
+      "xp": 30,
+      "tags": ["외접원", "사인 법칙", "삼각형"]
+    },
+    {
+      "id": "GEO-H02",
+      "title": "원 밖의 점에서 접선의 길이",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "원 밖의 점 P에서 반지름 r = 5인 원에 접선을 그을 때, OP = 13이면 접선의 길이 t는?",
+      "questionLatex": "OP = 13,\\; r = 5,\\; t = ?",
+      "answer": "12",
+      "answerLatex": "t = 12",
+      "solution": [
+        {
+          "step": 1,
+          "title": "직각삼각형 구성",
+          "text": "접선과 반지름은 수직이므로 t² + r² = OP²",
+          "latex": "t^2 + r^2 = OP^2"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "t² = 13² - 5² = 169 - 25 = 144",
+          "latex": "t^2 = 169 - 25 = 144"
+        },
+        {
+          "step": 3,
+          "title": "접선의 길이",
+          "text": "t = √144 = 12",
+          "latex": "t = \\sqrt{144} = 12"
+        }
+      ],
+      "xp": 30,
+      "tags": ["원", "접선", "피타고라스"]
+    },
+    {
+      "id": "GEO-H03",
+      "title": "헤론의 공식",
+      "difficulty": 6,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "세 변의 길이가 5, 6, 7인 삼각형의 넓이를 구하세요. '6√6' 형식으로 답하세요.",
+      "questionLatex": "a = 5,\\; b = 6,\\; c = 7",
+      "answer": "6√6",
+      "answerLatex": "S = 6\\sqrt{6}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "반둘레 계산",
+          "text": "s = (a + b + c) / 2",
+          "latex": "s = \\frac{5 + 6 + 7}{2} = 9"
+        },
+        {
+          "step": 2,
+          "title": "헤론의 공식 적용",
+          "text": "S = √(s(s-a)(s-b)(s-c))",
+          "latex": "S = \\sqrt{9 \\cdot 4 \\cdot 3 \\cdot 2} = \\sqrt{216}"
+        },
+        {
+          "step": 3,
+          "title": "간소화",
+          "text": "√216 = √(36×6) = 6√6",
+          "latex": "S = \\sqrt{36 \\cdot 6} = 6\\sqrt{6}"
+        }
+      ],
+      "xp": 35,
+      "tags": ["삼각형", "헤론의 공식", "넓이"]
+    },
+    {
+      "id": "GEO-X01",
+      "title": "원과 직선의 접선 조건",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "원 x² + y² = 25와 직선 3x + 4y = k가 접할 때, 양수 k의 값을 구하세요.",
+      "questionLatex": "x^2 + y^2 = 25,\\; 3x + 4y = k",
+      "answer": "25",
+      "answerLatex": "k = 25",
+      "solution": [
+        {
+          "step": 1,
+          "title": "원의 중심과 반지름",
+          "text": "원의 중심 O(0,0), 반지름 r = 5",
+          "latex": "O = (0, 0),\\; r = 5"
+        },
+        {
+          "step": 2,
+          "title": "접선 조건: 중심에서 직선까지의 거리 = 반지름",
+          "text": "직선 3x + 4y - k = 0 까지의 거리를 구합니다.",
+          "latex": "d = \\frac{|3 \\cdot 0 + 4 \\cdot 0 - k|}{\\sqrt{3^2 + 4^2}} = \\frac{|k|}{5} = 5"
+        },
+        {
+          "step": 3,
+          "title": "k 계산",
+          "text": "|k| = 25이므로 양수 k = 25",
+          "latex": "|k| = 25 \\Rightarrow k = 25"
+        }
+      ],
+      "xp": 40,
+      "tags": ["원", "직선", "접선 조건"]
+    },
+    {
+      "id": "GEO-X02",
+      "title": "직각삼각형의 내접원과 외접원",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "직각삼각형에서 ∠C = 90°이고 a = 6, b = 8, c = 10일 때, 외접원 반지름 R과 내접원 반지름 r에 대해 R - r의 값을 구하세요.",
+      "questionLatex": "\\angle C = 90^\\circ,\\; a = 6,\\; b = 8,\\; c = 10",
+      "answer": "3",
+      "answerLatex": "R - r = 5 - 2 = 3",
+      "solution": [
+        {
+          "step": 1,
+          "title": "외접원 반지름",
+          "text": "직각삼각형의 외접원 반지름 = 빗변 / 2",
+          "latex": "R = \\frac{c}{2} = \\frac{10}{2} = 5"
+        },
+        {
+          "step": 2,
+          "title": "내접원 반지름",
+          "text": "직각삼각형에서 r = (a + b - c) / 2",
+          "latex": "r = \\frac{a + b - c}{2} = \\frac{6 + 8 - 10}{2} = 2"
+        },
+        {
+          "step": 3,
+          "title": "R - r 계산",
+          "text": "R - r = 5 - 2 = 3",
+          "latex": "R - r = 5 - 2 = 3"
+        }
+      ],
+      "xp": 50,
+      "tags": ["외접원", "내접원", "직각삼각형"]
     }
   ]
 }

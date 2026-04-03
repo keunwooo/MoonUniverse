@@ -16,7 +16,7 @@ export default function MiniMap() {
       position: 'relative',
     }}>
       <div style={{ color: '#64748b', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-        Solar Map
+        태양계 지도
       </div>
       <svg width="120" height="110" viewBox="-60 -55 120 110" style={{ position: 'absolute', top: '25px', left: '10px' }}>
         {solarSystem.planets.map((planet) => (

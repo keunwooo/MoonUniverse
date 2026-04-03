@@ -3,98 +3,559 @@
   "problems": [
     {
       "id": "CAL-T01",
-      "title": "Limit Concept",
+      "title": "극한의 기본 개념",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "What is the limit of (x² - 1)/(x - 1) as x approaches 1?",
-      "questionLatex": "\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}",
+      "question": "lim(x→2) (x + 3)의 값은?",
+      "questionLatex": "\\lim_{x \\to 2} (x + 3)",
       "choices": [
-        {
-          "label": "A",
-          "text": "0"
-        },
-        {
-          "label": "B",
-          "text": "1"
-        },
-        {
-          "label": "C",
-          "text": "2",
-          "correct": true
-        },
-        {
-          "label": "D",
-          "text": "Undefined"
-        }
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "5", "correct": true },
+        { "label": "D", "text": "6" }
       ],
       "answer": "C",
       "solution": [
         {
           "step": 1,
-          "title": "Factor numerator",
-          "text": "x² - 1 = (x+1)(x-1)",
-          "latex": "\\frac{(x+1)(x-1)}{x-1}"
-        },
-        {
-          "step": 2,
-          "title": "Cancel",
-          "text": "Simplify to x + 1",
-          "latex": "= x + 1"
-        },
-        {
-          "step": 3,
-          "title": "Evaluate",
-          "text": "Substitute x = 1",
-          "latex": "1 + 1 = 2"
+          "title": "연속함수의 극한",
+          "text": "x + 3은 x = 2에서 연속이므로 x = 2를 직접 대입합니다.",
+          "latex": "\\lim_{x \\to 2} (x + 3) = 2 + 3 = 5"
         }
       ],
       "xp": 10,
-      "tags": [
-        "limits"
-      ]
+      "tags": ["극한", "기초"]
     },
     {
       "id": "CAL-T02",
-      "title": "Slope of Tangent",
+      "title": "다항함수의 미분",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "The derivative of f(x) = 3x is?",
-      "questionLatex": "f(x) = 3x",
+      "question": "f(x) = x³의 도함수 f'(x)는?",
+      "questionLatex": "f(x) = x^3",
       "choices": [
+        { "label": "A", "text": "f'(x) = x²" },
+        { "label": "B", "text": "f'(x) = 3x²", "correct": true },
+        { "label": "C", "text": "f'(x) = 3x" },
+        { "label": "D", "text": "f'(x) = x⁴/4" }
+      ],
+      "answer": "B",
+      "solution": [
         {
-          "label": "A",
-          "text": "3",
-          "correct": true
+          "step": 1,
+          "title": "거듭제곱 미분 공식",
+          "text": "xⁿ을 미분하면 nxⁿ⁻¹입니다.",
+          "latex": "\\frac{d}{dx}x^n = nx^{n-1}"
         },
         {
-          "label": "B",
-          "text": "3x"
-        },
-        {
-          "label": "C",
-          "text": "x"
-        },
-        {
-          "label": "D",
-          "text": "0"
+          "step": 2,
+          "title": "적용",
+          "text": "f'(x) = 3x²",
+          "latex": "f'(x) = 3x^{3-1} = 3x^2"
         }
+      ],
+      "xp": 10,
+      "tags": ["미분", "도함수", "기초"]
+    },
+    {
+      "id": "CAL-T03",
+      "title": "상수함수의 미분",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "f(x) = 5x² + 3x - 2의 도함수 f'(x)는?",
+      "questionLatex": "f(x) = 5x^2 + 3x - 2",
+      "choices": [
+        { "label": "A", "text": "f'(x) = 10x + 3", "correct": true },
+        { "label": "B", "text": "f'(x) = 10x" },
+        { "label": "C", "text": "f'(x) = 10x + 3 - 2" },
+        { "label": "D", "text": "f'(x) = 5x + 3" }
       ],
       "answer": "A",
       "solution": [
         {
           "step": 1,
-          "title": "Power rule",
-          "text": "d/dx(ax) = a",
-          "latex": "\\frac{d}{dx}(3x) = 3"
+          "title": "각 항 미분",
+          "text": "각 항을 따로 미분합니다.",
+          "latex": "\\frac{d}{dx}(5x^2) = 10x,\\; \\frac{d}{dx}(3x) = 3,\\; \\frac{d}{dx}(-2) = 0"
+        },
+        {
+          "step": 2,
+          "title": "합치기",
+          "text": "f'(x) = 10x + 3",
+          "latex": "f'(x) = 10x + 3"
         }
       ],
       "xp": 10,
-      "tags": [
-        "derivative",
-        "basic"
-      ]
+      "tags": ["미분", "다항함수", "기초"]
+    },
+    {
+      "id": "CAL-T04",
+      "title": "부정적분 기초",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "∫2x dx는?",
+      "questionLatex": "\\int 2x\\, dx",
+      "choices": [
+        { "label": "A", "text": "x + C" },
+        { "label": "B", "text": "x² + C", "correct": true },
+        { "label": "C", "text": "2x² + C" },
+        { "label": "D", "text": "2 + C" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "거듭제곱 적분 공식",
+          "text": "∫xⁿ dx = xⁿ⁺¹/(n+1) + C",
+          "latex": "\\int x^n\\, dx = \\frac{x^{n+1}}{n+1} + C"
+        },
+        {
+          "step": 2,
+          "title": "적용",
+          "text": "∫2x dx = 2 × x²/2 + C = x² + C",
+          "latex": "\\int 2x\\, dx = 2 \\cdot \\frac{x^2}{2} + C = x^2 + C"
+        }
+      ],
+      "xp": 10,
+      "tags": ["적분", "부정적분", "기초"]
+    },
+    {
+      "id": "CAL-E01",
+      "title": "극한값 계산",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "lim(x→3) (x² - 9)/(x - 3)의 값은?",
+      "questionLatex": "\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}",
+      "choices": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "6", "correct": true },
+        { "label": "D", "text": "9" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "인수분해",
+          "text": "분자를 인수분해하면 x² - 9 = (x-3)(x+3)",
+          "latex": "\\frac{x^2 - 9}{x - 3} = \\frac{(x-3)(x+3)}{x-3}"
+        },
+        {
+          "step": 2,
+          "title": "약분 후 극한",
+          "text": "x ≠ 3일 때 약분하면 x + 3",
+          "latex": "\\lim_{x \\to 3}(x + 3) = 3 + 3 = 6"
+        }
+      ],
+      "xp": 15,
+      "tags": ["극한", "인수분해"]
+    },
+    {
+      "id": "CAL-E02",
+      "title": "접선의 기울기",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "f(x) = x² + 2x에서 x = 1에서의 접선의 기울기는?",
+      "questionLatex": "f(x) = x^2 + 2x,\\; x = 1",
+      "choices": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "4", "correct": true },
+        { "label": "D", "text": "5" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "도함수 구하기",
+          "text": "f'(x) = 2x + 2",
+          "latex": "f'(x) = 2x + 2"
+        },
+        {
+          "step": 2,
+          "title": "x = 1 대입",
+          "text": "접선의 기울기 = f'(1) = 2(1) + 2 = 4",
+          "latex": "f'(1) = 2(1) + 2 = 4"
+        }
+      ],
+      "xp": 15,
+      "tags": ["미분", "접선", "도함수"]
+    },
+    {
+      "id": "CAL-E03",
+      "title": "정적분 기초",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "∫₀²2x dx의 값은?",
+      "questionLatex": "\\int_0^2 2x\\, dx",
+      "choices": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "4", "correct": true },
+        { "label": "C", "text": "6" },
+        { "label": "D", "text": "8" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "부정적분",
+          "text": "∫2x dx = x² + C",
+          "latex": "\\int 2x\\, dx = x^2 + C"
+        },
+        {
+          "step": 2,
+          "title": "정적분 계산",
+          "text": "[x²]₀² = 4 - 0 = 4",
+          "latex": "\\left[ x^2 \\right]_0^2 = 2^2 - 0^2 = 4"
+        }
+      ],
+      "xp": 15,
+      "tags": ["적분", "정적분"]
+    },
+    {
+      "id": "CAL-E04",
+      "title": "함수의 증가·감소",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "함수 f(x) = x² - 4x + 3은 어느 구간에서 증가하는가?",
+      "questionLatex": "f(x) = x^2 - 4x + 3",
+      "choices": [
+        { "label": "A", "text": "x < 2" },
+        { "label": "B", "text": "x > 2", "correct": true },
+        { "label": "C", "text": "x < -2" },
+        { "label": "D", "text": "모든 구간" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "도함수 구하기",
+          "text": "f'(x) = 2x - 4",
+          "latex": "f'(x) = 2x - 4"
+        },
+        {
+          "step": 2,
+          "title": "f'(x) > 0인 구간",
+          "text": "f'(x) > 0 ↔ 2x - 4 > 0 ↔ x > 2",
+          "latex": "f'(x) > 0 \\Leftrightarrow x > 2"
+        }
+      ],
+      "xp": 15,
+      "tags": ["미분", "증가·감소", "도함수"]
+    },
+    {
+      "id": "CAL-M01",
+      "title": "연쇄 법칙",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "f(x) = (x² + 1)³의 도함수 f'(x)는?",
+      "questionLatex": "f(x) = (x^2 + 1)^3",
+      "choices": [
+        { "label": "A", "text": "3(x² + 1)²" },
+        { "label": "B", "text": "6x(x² + 1)²", "correct": true },
+        { "label": "C", "text": "3x(x² + 1)²" },
+        { "label": "D", "text": "6(x² + 1)²" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "연쇄 법칙 적용",
+          "text": "바깥함수 미분 × 안쪽함수 미분",
+          "latex": "f'(x) = 3(x^2 + 1)^2 \\cdot \\frac{d}{dx}(x^2 + 1)"
+        },
+        {
+          "step": 2,
+          "title": "안쪽함수 미분",
+          "text": "(x² + 1)' = 2x",
+          "latex": "f'(x) = 3(x^2 + 1)^2 \\cdot 2x = 6x(x^2 + 1)^2"
+        }
+      ],
+      "xp": 20,
+      "tags": ["미분", "연쇄 법칙"]
+    },
+    {
+      "id": "CAL-M02",
+      "title": "넓이 계산",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "short",
+      "question": "곡선 y = x² - x와 x축 사이의 0 ≤ x ≤ 1 구간의 넓이를 구하세요.",
+      "questionLatex": "S = \\int_0^1 |x^2 - x|\\, dx",
+      "answer": "1/6",
+      "answerLatex": "S = \\dfrac{1}{6}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "함수값 부호 확인",
+          "text": "0 ≤ x ≤ 1에서 x² - x = x(x-1) ≤ 0이므로",
+          "latex": "S = \\int_0^1 -(x^2 - x)\\, dx = \\int_0^1 (x - x^2)\\, dx"
+        },
+        {
+          "step": 2,
+          "title": "적분 계산",
+          "text": "∫₀¹(x - x²) dx = [x²/2 - x³/3]₀¹",
+          "latex": "\\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1"
+        },
+        {
+          "step": 3,
+          "title": "대입",
+          "text": "= 1/2 - 1/3 = 1/6",
+          "latex": "= \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}"
+        }
+      ],
+      "xp": 20,
+      "tags": ["적분", "넓이", "정적분"]
+    },
+    {
+      "id": "CAL-M03",
+      "title": "극값 찾기",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "f(x) = x³ - 3x의 극솟값은?",
+      "questionLatex": "f(x) = x^3 - 3x",
+      "choices": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "-1" },
+        { "label": "C", "text": "-2", "correct": true },
+        { "label": "D", "text": "2" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "도함수 구하기",
+          "text": "f'(x) = 3x² - 3 = 3(x² - 1) = 3(x-1)(x+1)",
+          "latex": "f'(x) = 3x^2 - 3 = 3(x-1)(x+1)"
+        },
+        {
+          "step": 2,
+          "title": "임계점",
+          "text": "f'(x) = 0이면 x = 1 또는 x = -1",
+          "latex": "x = 1 \\;\\text{또는}\\; x = -1"
+        },
+        {
+          "step": 3,
+          "title": "극솟값",
+          "text": "x = 1 근방에서 f'이 음→양으로 바뀌므로 극솟값",
+          "latex": "f(1) = 1 - 3 = -2"
+        }
+      ],
+      "xp": 20,
+      "tags": ["미분", "극값", "임계점"]
+    },
+    {
+      "id": "CAL-M04",
+      "title": "이계도함수와 오목·볼록",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "f(x) = x³ - 6x² + 9x에서 변곡점의 x좌표는?",
+      "questionLatex": "f(x) = x^3 - 6x^2 + 9x",
+      "choices": [
+        { "label": "A", "text": "x = 1" },
+        { "label": "B", "text": "x = 2", "correct": true },
+        { "label": "C", "text": "x = 3" },
+        { "label": "D", "text": "x = 0" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "이계도함수 구하기",
+          "text": "f'(x) = 3x² - 12x + 9, f''(x) = 6x - 12",
+          "latex": "f''(x) = 6x - 12"
+        },
+        {
+          "step": 2,
+          "title": "f''(x) = 0 풀기",
+          "text": "6x - 12 = 0 → x = 2",
+          "latex": "6x - 12 = 0 \\Rightarrow x = 2"
+        },
+        {
+          "step": 3,
+          "title": "변곡점 확인",
+          "text": "x = 2 근방에서 f''의 부호가 바뀌므로 변곡점",
+          "latex": "\\text{변곡점: } x = 2"
+        }
+      ],
+      "xp": 25,
+      "tags": ["미분", "이계도함수", "변곡점"]
+    },
+    {
+      "id": "CAL-H01",
+      "title": "치환 적분",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "∫₀¹ x·e^(x²) dx의 값을 구하세요. (e = 자연로그 밑)",
+      "questionLatex": "\\int_0^1 x e^{x^2}\\, dx",
+      "answer": "(e-1)/2",
+      "answerLatex": "\\dfrac{e - 1}{2}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "치환",
+          "text": "u = x²로 놓으면 du = 2x dx",
+          "latex": "u = x^2 \\Rightarrow du = 2x\\, dx"
+        },
+        {
+          "step": 2,
+          "title": "적분 변환",
+          "text": "∫x·e^(x²) dx = (1/2)∫e^u du = e^u/2 + C = e^(x²)/2 + C",
+          "latex": "\\int x e^{x^2}\\, dx = \\frac{1}{2} e^{x^2} + C"
+        },
+        {
+          "step": 3,
+          "title": "정적분 계산",
+          "text": "[e^(x²)/2]₀¹ = e/2 - 1/2 = (e-1)/2",
+          "latex": "\\left[\\frac{e^{x^2}}{2}\\right]_0^1 = \\frac{e}{2} - \\frac{1}{2} = \\frac{e-1}{2}"
+        }
+      ],
+      "xp": 30,
+      "tags": ["적분", "치환 적분", "지수함수"]
+    },
+    {
+      "id": "CAL-H02",
+      "title": "속도와 위치",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "점의 위치가 x(t) = t³ - 3t일 때, 속도가 0이 되는 양의 시각 t를 구하세요.",
+      "questionLatex": "x(t) = t^3 - 3t",
+      "answer": "1",
+      "answerLatex": "t = 1",
+      "solution": [
+        {
+          "step": 1,
+          "title": "속도 = 위치의 도함수",
+          "text": "v(t) = x'(t) = 3t² - 3",
+          "latex": "v(t) = 3t^2 - 3"
+        },
+        {
+          "step": 2,
+          "title": "v(t) = 0 풀기",
+          "text": "3t² - 3 = 0 → t² = 1 → t = ±1",
+          "latex": "3t^2 - 3 = 0 \\Rightarrow t = \\pm 1"
+        },
+        {
+          "step": 3,
+          "title": "양의 시각 선택",
+          "text": "양의 시각은 t = 1",
+          "latex": "t = 1"
+        }
+      ],
+      "xp": 35,
+      "tags": ["미분", "속도", "응용"]
+    },
+    {
+      "id": "CAL-H03",
+      "title": "로피탈의 정리",
+      "difficulty": 6,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "lim(x→0) sin(x)/x 의 값을 구하세요.",
+      "questionLatex": "\\lim_{x \\to 0} \\frac{\\sin x}{x}",
+      "answer": "1",
+      "answerLatex": "1",
+      "solution": [
+        {
+          "step": 1,
+          "title": "0/0 부정형 확인",
+          "text": "x → 0일 때 sinx → 0, x → 0이므로 0/0 부정형입니다.",
+          "latex": "\\lim_{x \\to 0} \\frac{\\sin x}{x} = \\frac{0}{0} \\;(\\text{부정형})"
+        },
+        {
+          "step": 2,
+          "title": "로피탈의 정리 적용",
+          "text": "분자와 분모를 각각 미분합니다.",
+          "latex": "\\lim_{x \\to 0} \\frac{(\\sin x)'}{(x)'} = \\lim_{x \\to 0} \\frac{\\cos x}{1}"
+        },
+        {
+          "step": 3,
+          "title": "극한값",
+          "text": "cos(0) = 1",
+          "latex": "\\lim_{x \\to 0} \\cos x = \\cos 0 = 1"
+        }
+      ],
+      "xp": 35,
+      "tags": ["극한", "로피탈", "삼각함수"]
+    },
+    {
+      "id": "CAL-X01",
+      "title": "부분 적분",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "∫₁ᵉ x·ln(x) dx의 값을 구하세요. (e는 자연로그 밑)",
+      "questionLatex": "\\int_1^e x \\ln x\\, dx",
+      "answer": "(e²+1)/4",
+      "answerLatex": "\\dfrac{e^2 + 1}{4}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "부분 적분 공식",
+          "text": "u = ln(x), dv = x dx로 설정합니다.",
+          "latex": "u = \\ln x,\\; dv = x\\, dx \\Rightarrow du = \\frac{1}{x}dx,\\; v = \\frac{x^2}{2}"
+        },
+        {
+          "step": 2,
+          "title": "부분 적분 적용",
+          "text": "∫u dv = uv - ∫v du",
+          "latex": "\\int x \\ln x\\, dx = \\frac{x^2}{2}\\ln x - \\int \\frac{x^2}{2} \\cdot \\frac{1}{x}\\, dx"
+        },
+        {
+          "step": 3,
+          "title": "나머지 적분 계산",
+          "text": "= x²ln(x)/2 - x²/4 + C",
+          "latex": "= \\frac{x^2 \\ln x}{2} - \\frac{x^2}{4} + C"
+        },
+        {
+          "step": 4,
+          "title": "정적분 계산",
+          "text": "[x²ln(x)/2 - x²/4]₁ᵉ = (e²/2 - e²/4) - (0 - 1/4) = e²/4 + 1/4",
+          "latex": "\\left[\\frac{x^2 \\ln x}{2} - \\frac{x^2}{4}\\right]_1^e = \\frac{e^2}{4} + \\frac{1}{4} = \\frac{e^2 + 1}{4}"
+        }
+      ],
+      "xp": 40,
+      "tags": ["적분", "부분 적분", "로그"]
+    },
+    {
+      "id": "CAL-X02",
+      "title": "미분과 적분의 관계",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "formula",
+      "question": "F(x) = ∫₀ˣ (t² - 4t + 3) dt일 때, F'(2)의 값을 구하세요.",
+      "questionLatex": "F(x) = \\int_0^x (t^2 - 4t + 3)\\, dt,\\; F'(2) = ?",
+      "answer": "-1",
+      "answerLatex": "F'(2) = -1",
+      "solution": [
+        {
+          "step": 1,
+          "title": "미적분학의 기본 정리",
+          "text": "F(x) = ∫₀ˣ f(t) dt이면 F'(x) = f(x)",
+          "latex": "F'(x) = x^2 - 4x + 3"
+        },
+        {
+          "step": 2,
+          "title": "x = 2 대입",
+          "text": "F'(2) = 4 - 8 + 3 = -1",
+          "latex": "F'(2) = 2^2 - 4(2) + 3 = 4 - 8 + 3 = -1"
+        }
+      ],
+      "xp": 50,
+      "tags": ["미적분학 기본 정리", "미분", "적분"]
     }
   ]
 }

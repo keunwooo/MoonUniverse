@@ -3,85 +3,547 @@
   "problems": [
     {
       "id": "PRO-T01",
-      "title": "Coin Flip",
+      "title": "확률의 기본 개념",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "What is the probability of getting heads on a fair coin?",
+      "question": "주사위를 한 번 던질 때 3이 나올 확률은?",
+      "questionLatex": "P(\\{3\\}) = ?",
       "choices": [
-        {
-          "label": "A",
-          "text": "1/4"
-        },
-        {
-          "label": "B",
-          "text": "1/2",
-          "correct": true
-        },
-        {
-          "label": "C",
-          "text": "1/3"
-        },
-        {
-          "label": "D",
-          "text": "1"
-        }
+        { "label": "A", "text": "1/3" },
+        { "label": "B", "text": "1/6", "correct": true },
+        { "label": "C", "text": "1/2" },
+        { "label": "D", "text": "1/4" }
       ],
       "answer": "B",
       "solution": [
         {
           "step": 1,
-          "title": "Count outcomes",
-          "text": "2 possible: heads or tails",
-          "latex": "P = \\frac{1}{2}"
+          "title": "표본 공간 파악",
+          "text": "주사위의 가능한 결과: {1, 2, 3, 4, 5, 6}, 전체 6가지",
+          "latex": "S = \\{1, 2, 3, 4, 5, 6\\},\\; |S| = 6"
+        },
+        {
+          "step": 2,
+          "title": "확률 계산",
+          "text": "3이 나오는 경우의 수 = 1",
+          "latex": "P(\\{3\\}) = \\frac{1}{6}"
         }
       ],
       "xp": 10,
-      "tags": [
-        "basic",
-        "coin"
-      ]
+      "tags": ["확률", "기초", "표본 공간"]
     },
     {
       "id": "PRO-T02",
-      "title": "Dice Roll",
+      "title": "동전 던지기 확률",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "What is the probability of rolling a 6 on a fair die?",
+      "question": "동전을 두 번 던질 때 모두 앞면이 나올 확률은?",
+      "questionLatex": "P(\\text{앞면, 앞면})",
       "choices": [
-        {
-          "label": "A",
-          "text": "1/2"
-        },
-        {
-          "label": "B",
-          "text": "1/3"
-        },
-        {
-          "label": "C",
-          "text": "1/6",
-          "correct": true
-        },
-        {
-          "label": "D",
-          "text": "1/12"
-        }
+        { "label": "A", "text": "1/2" },
+        { "label": "B", "text": "1/3" },
+        { "label": "C", "text": "1/4", "correct": true },
+        { "label": "D", "text": "3/4" }
       ],
       "answer": "C",
       "solution": [
         {
           "step": 1,
-          "title": "Count outcomes",
-          "text": "6 equally likely faces",
-          "latex": "P(6) = \\frac{1}{6}"
+          "title": "표본 공간",
+          "text": "두 번 던지면 {앞앞, 앞뒤, 뒤앞, 뒤뒤} 총 4가지",
+          "latex": "S = \\{HH, HT, TH, TT\\},\\; |S| = 4"
+        },
+        {
+          "step": 2,
+          "title": "확률 계산",
+          "text": "모두 앞면인 경우 = {HH} = 1가지",
+          "latex": "P(HH) = \\frac{1}{4}"
         }
       ],
       "xp": 10,
-      "tags": [
-        "basic",
-        "dice"
-      ]
+      "tags": ["확률", "독립사건", "기초"]
+    },
+    {
+      "id": "PRO-T03",
+      "title": "순열의 기초",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "5명 중에서 2명을 순서 있게 뽑는 방법의 수는?",
+      "questionLatex": "_5P_2 = ?",
+      "choices": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "15" },
+        { "label": "C", "text": "20", "correct": true },
+        { "label": "D", "text": "25" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "순열 공식",
+          "text": "_nPr = n! / (n-r)!",
+          "latex": "_5P_2 = \\frac{5!}{(5-2)!} = \\frac{5!}{3!}"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "= 5 × 4 = 20",
+          "latex": "_5P_2 = 5 \\times 4 = 20"
+        }
+      ],
+      "xp": 10,
+      "tags": ["순열", "경우의 수", "기초"]
+    },
+    {
+      "id": "PRO-T04",
+      "title": "조합의 기초",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "5명 중에서 3명을 순서 없이 뽑는 방법의 수는?",
+      "questionLatex": "\\binom{5}{3} = ?",
+      "choices": [
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "10", "correct": true },
+        { "label": "C", "text": "15" },
+        { "label": "D", "text": "20" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "조합 공식",
+          "text": "C(n, r) = n! / (r!(n-r)!)",
+          "latex": "\\binom{5}{3} = \\frac{5!}{3! \\cdot 2!}"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "= 120 / (6 × 2) = 10",
+          "latex": "= \\frac{120}{6 \\times 2} = 10"
+        }
+      ],
+      "xp": 10,
+      "tags": ["조합", "경우의 수", "기초"]
+    },
+    {
+      "id": "PRO-E01",
+      "title": "여사건의 확률",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "주사위를 한 번 던질 때 6이 나오지 않을 확률은?",
+      "questionLatex": "P(\\text{6이 아님}) = ?",
+      "choices": [
+        { "label": "A", "text": "1/6" },
+        { "label": "B", "text": "4/6" },
+        { "label": "C", "text": "5/6", "correct": true },
+        { "label": "D", "text": "1" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "여사건 공식",
+          "text": "P(여사건) = 1 - P(사건)",
+          "latex": "P(A^c) = 1 - P(A)"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "P(6이 아님) = 1 - 1/6 = 5/6",
+          "latex": "P(\\text{6 아님}) = 1 - \\frac{1}{6} = \\frac{5}{6}"
+        }
+      ],
+      "xp": 15,
+      "tags": ["확률", "여사건"]
+    },
+    {
+      "id": "PRO-E02",
+      "title": "덧셈 법칙",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "P(A) = 0.4, P(B) = 0.3, P(A∩B) = 0.1일 때 P(A∪B)는?",
+      "questionLatex": "P(A) = 0.4,\\; P(B) = 0.3,\\; P(A \\cap B) = 0.1",
+      "choices": [
+        { "label": "A", "text": "0.5" },
+        { "label": "B", "text": "0.6", "correct": true },
+        { "label": "C", "text": "0.7" },
+        { "label": "D", "text": "0.8" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "덧셈 법칙",
+          "text": "P(A∪B) = P(A) + P(B) - P(A∩B)",
+          "latex": "P(A \\cup B) = P(A) + P(B) - P(A \\cap B)"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "P(A∪B) = 0.4 + 0.3 - 0.1 = 0.6",
+          "latex": "P(A \\cup B) = 0.4 + 0.3 - 0.1 = 0.6"
+        }
+      ],
+      "xp": 15,
+      "tags": ["확률", "덧셈 법칙"]
+    },
+    {
+      "id": "PRO-E03",
+      "title": "독립사건",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "A와 B는 독립 사건이고 P(A) = 0.5, P(B) = 0.4일 때 P(A∩B)는?",
+      "questionLatex": "A \\perp B,\\; P(A) = 0.5,\\; P(B) = 0.4",
+      "choices": [
+        { "label": "A", "text": "0.1" },
+        { "label": "B", "text": "0.2", "correct": true },
+        { "label": "C", "text": "0.4" },
+        { "label": "D", "text": "0.9" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "독립 사건의 곱셈 법칙",
+          "text": "독립 사건이면 P(A∩B) = P(A) × P(B)",
+          "latex": "P(A \\cap B) = P(A) \\times P(B)"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "P(A∩B) = 0.5 × 0.4 = 0.2",
+          "latex": "P(A \\cap B) = 0.5 \\times 0.4 = 0.2"
+        }
+      ],
+      "xp": 15,
+      "tags": ["확률", "독립사건", "곱셈 법칙"]
+    },
+    {
+      "id": "PRO-E04",
+      "title": "평균(기댓값) 계산",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "확률변수 X의 분포가 P(X=1)=0.3, P(X=2)=0.5, P(X=3)=0.2일 때 E(X)는?",
+      "questionLatex": "E(X) = \\sum x \\cdot P(X = x)",
+      "choices": [
+        { "label": "A", "text": "1.7" },
+        { "label": "B", "text": "1.9", "correct": true },
+        { "label": "C", "text": "2.0" },
+        { "label": "D", "text": "2.1" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "기댓값 공식",
+          "text": "E(X) = 각 값 × 확률의 합",
+          "latex": "E(X) = 1 \\cdot 0.3 + 2 \\cdot 0.5 + 3 \\cdot 0.2"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "E(X) = 0.3 + 1.0 + 0.6 = 1.9",
+          "latex": "E(X) = 0.3 + 1.0 + 0.6 = 1.9"
+        }
+      ],
+      "xp": 15,
+      "tags": ["확률변수", "기댓값", "기초 통계"]
+    },
+    {
+      "id": "PRO-M01",
+      "title": "조건부 확률",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "P(A) = 0.6, P(A∩B) = 0.3일 때 P(B|A)는?",
+      "questionLatex": "P(A) = 0.6,\\; P(A \\cap B) = 0.3,\\; P(B|A) = ?",
+      "choices": [
+        { "label": "A", "text": "0.3" },
+        { "label": "B", "text": "0.5", "correct": true },
+        { "label": "C", "text": "0.6" },
+        { "label": "D", "text": "0.8" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "조건부 확률 공식",
+          "text": "P(B|A) = P(A∩B) / P(A)",
+          "latex": "P(B|A) = \\frac{P(A \\cap B)}{P(A)}"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "P(B|A) = 0.3 / 0.6 = 0.5",
+          "latex": "P(B|A) = \\frac{0.3}{0.6} = 0.5"
+        }
+      ],
+      "xp": 20,
+      "tags": ["조건부 확률", "확률"]
+    },
+    {
+      "id": "PRO-M02",
+      "title": "이항분포",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "성공 확률이 1/3인 시행을 3번 할 때, 정확히 1번 성공할 확률은?",
+      "questionLatex": "X \\sim B\\left(3, \\frac{1}{3}\\right),\\; P(X = 1) = ?",
+      "choices": [
+        { "label": "A", "text": "4/9" },
+        { "label": "B", "text": "4/9" },
+        { "label": "C", "text": "12/27", "correct": true },
+        { "label": "D", "text": "6/27" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "이항분포 공식",
+          "text": "P(X=k) = C(n,k) × p^k × (1-p)^(n-k)",
+          "latex": "P(X = 1) = \\binom{3}{1} \\cdot \\left(\\frac{1}{3}\\right)^1 \\cdot \\left(\\frac{2}{3}\\right)^2"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "= 3 × (1/3) × (4/9) = 12/27 = 4/9",
+          "latex": "= 3 \\cdot \\frac{1}{3} \\cdot \\frac{4}{9} = \\frac{12}{27} = \\frac{4}{9}"
+        }
+      ],
+      "xp": 20,
+      "tags": ["이항분포", "확률변수"]
+    },
+    {
+      "id": "PRO-M03",
+      "title": "순열 응용",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "MATH의 4개 글자를 일렬로 배열하는 방법의 수는?",
+      "questionLatex": "_4P_4 = 4!",
+      "choices": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "16" },
+        { "label": "C", "text": "20" },
+        { "label": "D", "text": "24", "correct": true }
+      ],
+      "answer": "D",
+      "solution": [
+        {
+          "step": 1,
+          "title": "순열 계산",
+          "text": "서로 다른 4개를 모두 나열하는 방법 = 4!",
+          "latex": "4! = 4 \\times 3 \\times 2 \\times 1 = 24"
+        }
+      ],
+      "xp": 20,
+      "tags": ["순열", "경우의 수"]
+    },
+    {
+      "id": "PRO-M04",
+      "title": "분산 계산",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "short",
+      "question": "자료 {2, 4, 4, 4, 5, 5, 7, 9}의 분산을 구하세요.",
+      "questionLatex": "\\text{자료}: \\{2, 4, 4, 4, 5, 5, 7, 9\\}",
+      "answer": "4",
+      "answerLatex": "\\sigma^2 = 4",
+      "solution": [
+        {
+          "step": 1,
+          "title": "평균 계산",
+          "text": "평균 = (2+4+4+4+5+5+7+9)/8 = 40/8 = 5",
+          "latex": "\\bar{x} = \\frac{2+4+4+4+5+5+7+9}{8} = \\frac{40}{8} = 5"
+        },
+        {
+          "step": 2,
+          "title": "편차의 제곱합",
+          "text": "(2-5)²+(4-5)²×3+(5-5)²×2+(7-5)²+(9-5)² = 9+3+0+4+16 = 32",
+          "latex": "\\sum(x_i - \\bar{x})^2 = 9 + 3 + 0 + 4 + 16 = 32"
+        },
+        {
+          "step": 3,
+          "title": "분산",
+          "text": "분산 = 32 / 8 = 4",
+          "latex": "\\sigma^2 = \\frac{32}{8} = 4"
+        }
+      ],
+      "xp": 25,
+      "tags": ["통계", "분산", "평균"]
+    },
+    {
+      "id": "PRO-H01",
+      "title": "베이즈 정리",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "불량률이 2%인 제품을 검사기로 검사할 때, 검사기는 불량품을 95% 확률로 불량으로 판정하고 정상품을 3% 확률로 불량으로 오판정합니다. 검사기가 불량으로 판정했을 때 실제 불량품일 확률을 분수로 구하세요 (소수 셋째자리 반올림).",
+      "questionLatex": "P(\\text{불량}|\\text{불량 판정}) = ?",
+      "answer": "19/57.94 ≈ 0.397",
+      "answerLatex": "P \\approx 0.397",
+      "solution": [
+        {
+          "step": 1,
+          "title": "사전 확률 설정",
+          "text": "P(불량) = 0.02, P(정상) = 0.98",
+          "latex": "P(D) = 0.02,\\; P(D^c) = 0.98"
+        },
+        {
+          "step": 2,
+          "title": "우도 설정",
+          "text": "P(+|불량) = 0.95, P(+|정상) = 0.03",
+          "latex": "P(+|D) = 0.95,\\; P(+|D^c) = 0.03"
+        },
+        {
+          "step": 3,
+          "title": "전체 확률",
+          "text": "P(+) = 0.02×0.95 + 0.98×0.03 = 0.019 + 0.0294 = 0.0484",
+          "latex": "P(+) = 0.02 \\times 0.95 + 0.98 \\times 0.03 = 0.0484"
+        },
+        {
+          "step": 4,
+          "title": "베이즈 정리",
+          "text": "P(불량|+) = (0.02×0.95)/0.0484 ≈ 0.397",
+          "latex": "P(D|+) = \\frac{0.019}{0.0484} \\approx 0.393"
+        }
+      ],
+      "xp": 30,
+      "tags": ["베이즈 정리", "조건부 확률"]
+    },
+    {
+      "id": "PRO-H02",
+      "title": "이항분포의 기댓값과 분산",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "X ~ B(20, 0.4)일 때, E(X) + Var(X)의 값을 구하세요.",
+      "questionLatex": "X \\sim B(20, 0.4),\\; E(X) + \\text{Var}(X) = ?",
+      "answer": "12.8",
+      "answerLatex": "E(X) + \\text{Var}(X) = 8 + 4.8 = 12.8",
+      "solution": [
+        {
+          "step": 1,
+          "title": "이항분포의 기댓값",
+          "text": "E(X) = np = 20 × 0.4 = 8",
+          "latex": "E(X) = np = 20 \\times 0.4 = 8"
+        },
+        {
+          "step": 2,
+          "title": "이항분포의 분산",
+          "text": "Var(X) = np(1-p) = 20 × 0.4 × 0.6 = 4.8",
+          "latex": "\\text{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8"
+        },
+        {
+          "step": 3,
+          "title": "합산",
+          "text": "E(X) + Var(X) = 8 + 4.8 = 12.8",
+          "latex": "8 + 4.8 = 12.8"
+        }
+      ],
+      "xp": 35,
+      "tags": ["이항분포", "기댓값", "분산"]
+    },
+    {
+      "id": "PRO-H03",
+      "title": "중복조합",
+      "difficulty": 6,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "서로 다른 3종류의 과일 중에서 총 5개를 선택하는 방법의 수는? (같은 종류를 여러 개 선택 가능)",
+      "questionLatex": "H(3, 5) = \\binom{3+5-1}{5}",
+      "answer": "21",
+      "answerLatex": "H(3,5) = \\binom{7}{5} = 21",
+      "solution": [
+        {
+          "step": 1,
+          "title": "중복조합 공식",
+          "text": "H(n, r) = C(n+r-1, r)",
+          "latex": "H(n, r) = \\binom{n + r - 1}{r}"
+        },
+        {
+          "step": 2,
+          "title": "값 대입",
+          "text": "H(3, 5) = C(3+5-1, 5) = C(7, 5)",
+          "latex": "H(3, 5) = \\binom{7}{5} = \\frac{7!}{5! \\cdot 2!}"
+        },
+        {
+          "step": 3,
+          "title": "계산",
+          "text": "= (7×6)/(2×1) = 21",
+          "latex": "= \\frac{7 \\times 6}{2} = 21"
+        }
+      ],
+      "xp": 35,
+      "tags": ["중복조합", "경우의 수", "조합"]
+    },
+    {
+      "id": "PRO-X01",
+      "title": "정규분포와 표준화",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "X ~ N(50, 10²)일 때, P(40 ≤ X ≤ 60)의 값을 구하세요. (P(0 ≤ Z ≤ 1) = 0.3413 이용)",
+      "questionLatex": "X \\sim N(50, 10^2),\\; P(40 \\leq X \\leq 60) = ?",
+      "answer": "0.6826",
+      "answerLatex": "P(40 \\leq X \\leq 60) \\approx 0.6826",
+      "solution": [
+        {
+          "step": 1,
+          "title": "표준화",
+          "text": "Z = (X - μ)/σ = (X - 50)/10으로 표준화합니다.",
+          "latex": "Z = \\frac{X - 50}{10}"
+        },
+        {
+          "step": 2,
+          "title": "확률 변환",
+          "text": "P(40 ≤ X ≤ 60) = P(-1 ≤ Z ≤ 1)",
+          "latex": "P\\left(\\frac{40-50}{10} \\leq Z \\leq \\frac{60-50}{10}\\right) = P(-1 \\leq Z \\leq 1)"
+        },
+        {
+          "step": 3,
+          "title": "대칭성 이용",
+          "text": "P(-1 ≤ Z ≤ 1) = 2 × P(0 ≤ Z ≤ 1) = 2 × 0.3413 = 0.6826",
+          "latex": "P(-1 \\leq Z \\leq 1) = 2 \\times 0.3413 = 0.6826"
+        }
+      ],
+      "xp": 40,
+      "tags": ["정규분포", "표준화", "확률"]
+    },
+    {
+      "id": "PRO-X02",
+      "title": "확률변수의 변환",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "formula",
+      "question": "확률변수 X에 대해 E(X) = 3, Var(X) = 4일 때, Y = 2X + 1의 기댓값 E(Y)와 분산 Var(Y)를 구하세요.",
+      "questionLatex": "E(X) = 3,\\; \\text{Var}(X) = 4,\\; Y = 2X + 1",
+      "answer": "E(Y) = 7, Var(Y) = 16",
+      "answerLatex": "E(Y) = 7,\\; \\text{Var}(Y) = 16",
+      "solution": [
+        {
+          "step": 1,
+          "title": "기댓값의 선형성",
+          "text": "E(aX + b) = a·E(X) + b",
+          "latex": "E(Y) = E(2X + 1) = 2E(X) + 1 = 2(3) + 1 = 7"
+        },
+        {
+          "step": 2,
+          "title": "분산의 성질",
+          "text": "Var(aX + b) = a²·Var(X)",
+          "latex": "\\text{Var}(Y) = \\text{Var}(2X + 1) = 2^2 \\cdot \\text{Var}(X) = 4 \\times 4 = 16"
+        }
+      ],
+      "xp": 50,
+      "tags": ["확률변수", "기댓값", "분산", "변환"]
     }
   ]
 }

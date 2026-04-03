@@ -20,7 +20,7 @@ export default function ShortAnswer({ onSubmit, disabled }: Props) {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
         disabled={disabled}
-        placeholder="Enter your answer..."
+        placeholder="답을 입력하세요..."
         style={{
           width: '300px',
           padding: '0.8rem 1.2rem',
@@ -49,7 +49,7 @@ export default function ShortAnswer({ onSubmit, disabled }: Props) {
             fontSize: '1rem',
           }}
         >
-          Submit Answer
+          정답 제출
         </button>
       </div>
     </div>

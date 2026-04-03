@@ -1,7 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { UserProgress, Tier } from '../types'
+import type { UserProgress, Tier, Problem } from '../types'
 import { calculateXp } from '../utils/xp'
+import { getUnlockedTier, isSunUnlocked } from '../utils/unlock'
 
 const DEFAULT_PROGRESS: UserProgress = {
   level: 1,
@@ -25,6 +26,7 @@ interface GameStore {
   progress: UserProgress
   solveProblem: (id: string, correct: boolean, baseXp: number, time: number) => void
   updateUnlock: (subject: string, tier: Tier) => void
+  checkAndUpdateUnlocks: (subjectId: string, problems?: Problem[]) => void
   reset: () => void
 }
 
@@ -75,6 +77,25 @@ export const useGameStore = create<GameStore>()(
             unlocked: { ...state.progress.unlocked, [subject]: tier },
           },
         }))
+      },
+
+      checkAndUpdateUnlocks: (subjectId, problems) => {
+        if (!problems || problems.length === 0) return
+        set((state) => {
+          const newTier = getUnlockedTier(problems, state.progress.solved)
+          const currentTier = state.progress.unlocked[subjectId]
+          if (newTier !== currentTier) {
+            const newUnlocked = { ...state.progress.unlocked, [subjectId]: newTier }
+            return {
+              progress: {
+                ...state.progress,
+                unlocked: newUnlocked,
+                sunUnlocked: isSunUnlocked(newUnlocked),
+              },
+            }
+          }
+          return state
+        })
       },
 
       reset: () => set({ progress: { ...DEFAULT_PROGRESS, solved: {}, unlocked: { ...DEFAULT_PROGRESS.unlocked }, stats: { ...DEFAULT_PROGRESS.stats } } }),

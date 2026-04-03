@@ -3,98 +3,523 @@
   "problems": [
     {
       "id": "FUN-T01",
-      "title": "Function Evaluation",
+      "title": "함수의 기본 개념",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "If f(x) = 2x + 1, what is f(3)?",
-      "questionLatex": "f(x) = 2x + 1",
+      "question": "함수 f(x) = 2x + 1에서 f(3)의 값은?",
+      "questionLatex": "f(x) = 2x + 1,\\; f(3) = ?",
       "choices": [
-        {
-          "label": "A",
-          "text": "5"
-        },
-        {
-          "label": "B",
-          "text": "7",
-          "correct": true
-        },
-        {
-          "label": "C",
-          "text": "6"
-        },
-        {
-          "label": "D",
-          "text": "9"
-        }
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "7", "correct": true },
+        { "label": "C", "text": "9" },
+        { "label": "D", "text": "6" }
       ],
       "answer": "B",
       "solution": [
         {
           "step": 1,
-          "title": "Substitute x=3",
-          "text": "f(3) = 2(3) + 1",
-          "latex": "f(3) = 2(3) + 1"
-        },
-        {
-          "step": 2,
-          "title": "Calculate",
-          "text": "f(3) = 7",
-          "latex": "f(3) = 6 + 1 = 7"
+          "title": "x = 3 대입",
+          "text": "f(3) = 2(3) + 1로 계산합니다.",
+          "latex": "f(3) = 2 \\times 3 + 1 = 6 + 1 = 7"
         }
       ],
       "xp": 10,
-      "tags": [
-        "evaluation",
-        "linear"
-      ]
+      "tags": ["함수", "함수값", "기초"]
     },
     {
       "id": "FUN-T02",
-      "title": "Domain Basics",
+      "title": "일차함수 그래프",
       "difficulty": 1,
       "tier": "tutorial",
       "inputType": "multiple",
-      "question": "What value of x makes f(x) = 1/x undefined?",
-      "questionLatex": "f(x) = \\frac{1}{x}",
+      "question": "일차함수 y = 3x - 2의 y절편은?",
+      "questionLatex": "y = 3x - 2",
       "choices": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "-2", "correct": true },
+        { "label": "D", "text": "-3" }
+      ],
+      "answer": "C",
+      "solution": [
         {
-          "label": "A",
-          "text": "x = 0",
-          "correct": true
-        },
-        {
-          "label": "B",
-          "text": "x = 1"
-        },
-        {
-          "label": "C",
-          "text": "x = -1"
-        },
-        {
-          "label": "D",
-          "text": "No value"
+          "step": 1,
+          "title": "y절편 정의",
+          "text": "y절편은 x = 0일 때의 y값입니다.",
+          "latex": "x = 0 \\Rightarrow y = 3(0) - 2 = -2"
         }
+      ],
+      "xp": 10,
+      "tags": ["일차함수", "y절편", "기초"]
+    },
+    {
+      "id": "FUN-T03",
+      "title": "기울기",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "두 점 (1, 3)과 (3, 7)을 지나는 직선의 기울기는?",
+      "questionLatex": "(1, 3),\\; (3, 7)",
+      "choices": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2", "correct": true },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "기울기 공식",
+          "text": "기울기 = (y₂ - y₁) / (x₂ - x₁)",
+          "latex": "m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{7 - 3}{3 - 1} = \\frac{4}{2} = 2"
+        }
+      ],
+      "xp": 10,
+      "tags": ["일차함수", "기울기"]
+    },
+    {
+      "id": "FUN-T04",
+      "title": "이차함수 꼭짓점",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "이차함수 y = (x - 2)² + 3의 꼭짓점의 좌표는?",
+      "questionLatex": "y = (x - 2)^2 + 3",
+      "choices": [
+        { "label": "A", "text": "(2, 3)", "correct": true },
+        { "label": "B", "text": "(-2, 3)" },
+        { "label": "C", "text": "(2, -3)" },
+        { "label": "D", "text": "(3, 2)" }
       ],
       "answer": "A",
       "solution": [
         {
           "step": 1,
-          "title": "Division by zero",
-          "text": "A fraction is undefined when denominator = 0",
-          "latex": "x \\neq 0"
-        },
-        {
-          "step": 2,
-          "title": "Answer",
-          "text": "x = 0 makes f(x) undefined",
-          "latex": "f(0) = \\frac{1}{0} \\;\\text{(undefined)}"
+          "title": "꼭짓점 형태 확인",
+          "text": "y = (x - p)² + q 에서 꼭짓점은 (p, q)입니다.",
+          "latex": "y = (x - 2)^2 + 3 \\Rightarrow \\text{꼭짓점} = (2, 3)"
         }
       ],
       "xp": 10,
-      "tags": [
-        "domain"
-      ]
+      "tags": ["이차함수", "꼭짓점", "기초"]
+    },
+    {
+      "id": "FUN-E01",
+      "title": "일차함수 방정식 구하기",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "기울기가 2이고 점 (1, 5)를 지나는 일차함수의 y절편은?",
+      "questionLatex": "m = 2,\\; (1, 5) \\text{를 지남}",
+      "choices": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3", "correct": true },
+        { "label": "D", "text": "4" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "일차함수 방정식 세우기",
+          "text": "y = 2x + b에 점 (1, 5) 대입",
+          "latex": "5 = 2(1) + b \\Rightarrow b = 3"
+        },
+        {
+          "step": 2,
+          "title": "함수 방정식",
+          "text": "y = 2x + 3이므로 y절편 = 3",
+          "latex": "y = 2x + 3,\\; y절편 = 3"
+        }
+      ],
+      "xp": 15,
+      "tags": ["일차함수", "y절편"]
+    },
+    {
+      "id": "FUN-E02",
+      "title": "이차함수 표준형 변환",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "이차함수 y = x² - 4x + 7을 꼭짓점 형태로 변환하면?",
+      "questionLatex": "y = x^2 - 4x + 7",
+      "choices": [
+        { "label": "A", "text": "y = (x - 2)² + 4" },
+        { "label": "B", "text": "y = (x - 2)² + 3", "correct": true },
+        { "label": "C", "text": "y = (x + 2)² + 3" },
+        { "label": "D", "text": "y = (x - 4)² + 3" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "완전제곱식으로 변환",
+          "text": "x² - 4x = (x-2)² - 4를 이용합니다.",
+          "latex": "y = (x^2 - 4x + 4) - 4 + 7"
+        },
+        {
+          "step": 2,
+          "title": "정리",
+          "text": "y = (x-2)² + 3",
+          "latex": "y = (x - 2)^2 + 3"
+        }
+      ],
+      "xp": 15,
+      "tags": ["이차함수", "꼭짓점 형태", "완전제곱"]
+    },
+    {
+      "id": "FUN-E03",
+      "title": "함수의 정의역과 치역",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "함수 f(x) = x² (정의역: {-2, -1, 0, 1, 2})의 치역은?",
+      "questionLatex": "f(x) = x^2,\\; \\text{정의역} = \\{-2, -1, 0, 1, 2\\}",
+      "choices": [
+        { "label": "A", "text": "{-4, -1, 0, 1, 4}" },
+        { "label": "B", "text": "{0, 1, 2, 4}" },
+        { "label": "C", "text": "{0, 1, 4}", "correct": true },
+        { "label": "D", "text": "{1, 4}" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "각 x값에 함수 적용",
+          "text": "f(-2)=4, f(-1)=1, f(0)=0, f(1)=1, f(2)=4",
+          "latex": "f(-2) = 4,\\; f(-1) = 1,\\; f(0) = 0"
+        },
+        {
+          "step": 2,
+          "title": "중복 제거 후 치역",
+          "text": "치역은 중복을 제거한 함수값의 집합입니다.",
+          "latex": "\\text{치역} = \\{0, 1, 4\\}"
+        }
+      ],
+      "xp": 15,
+      "tags": ["함수", "정의역", "치역"]
+    },
+    {
+      "id": "FUN-E04",
+      "title": "역함수 기초",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "함수 f(x) = 2x + 4의 역함수 f⁻¹(x)는?",
+      "questionLatex": "f(x) = 2x + 4",
+      "choices": [
+        { "label": "A", "text": "f⁻¹(x) = x/2 - 2", "correct": true },
+        { "label": "B", "text": "f⁻¹(x) = x/2 + 2" },
+        { "label": "C", "text": "f⁻¹(x) = 2x - 4" },
+        { "label": "D", "text": "f⁻¹(x) = (x-4)/2" }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "y = f(x)로 놓기",
+          "text": "y = 2x + 4",
+          "latex": "y = 2x + 4"
+        },
+        {
+          "step": 2,
+          "title": "x에 대해 풀기",
+          "text": "2x = y - 4 → x = (y-4)/2 = y/2 - 2",
+          "latex": "x = \\frac{y - 4}{2} = \\frac{y}{2} - 2"
+        },
+        {
+          "step": 3,
+          "title": "x와 y 바꾸기",
+          "text": "역함수: f⁻¹(x) = x/2 - 2",
+          "latex": "f^{-1}(x) = \\frac{x}{2} - 2"
+        }
+      ],
+      "xp": 15,
+      "tags": ["역함수", "일차함수"]
+    },
+    {
+      "id": "FUN-M01",
+      "title": "합성함수",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "f(x) = x + 2, g(x) = 3x일 때, (g∘f)(4)의 값은?",
+      "questionLatex": "f(x) = x + 2,\\; g(x) = 3x,\\; (g \\circ f)(4) = ?",
+      "choices": [
+        { "label": "A", "text": "14" },
+        { "label": "B", "text": "18", "correct": true },
+        { "label": "C", "text": "20" },
+        { "label": "D", "text": "16" }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "합성함수 순서 확인",
+          "text": "(g∘f)(x) = g(f(x))이므로 먼저 f(4)를 계산합니다.",
+          "latex": "f(4) = 4 + 2 = 6"
+        },
+        {
+          "step": 2,
+          "title": "g에 대입",
+          "text": "g(f(4)) = g(6) = 3 × 6 = 18",
+          "latex": "g(f(4)) = g(6) = 3 \\times 6 = 18"
+        }
+      ],
+      "xp": 20,
+      "tags": ["합성함수", "함수"]
+    },
+    {
+      "id": "FUN-M02",
+      "title": "이차함수의 최댓값·최솟값",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "이차함수 y = -x² + 4x - 1의 최댓값은?",
+      "questionLatex": "y = -x^2 + 4x - 1",
+      "choices": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3", "correct": true },
+        { "label": "D", "text": "4" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "꼭짓점 형태로 변환",
+          "text": "y = -(x² - 4x) - 1 = -(x² - 4x + 4) + 4 - 1",
+          "latex": "y = -(x - 2)^2 + 3"
+        },
+        {
+          "step": 2,
+          "title": "최댓값 확인",
+          "text": "a < 0이므로 위로 볼록, 꼭짓점에서 최댓값 y = 3",
+          "latex": "\\text{최댓값} = 3 \\;(x = 2\\text{일 때})"
+        }
+      ],
+      "xp": 20,
+      "tags": ["이차함수", "최댓값", "꼭짓점"]
+    },
+    {
+      "id": "FUN-M03",
+      "title": "일차함수와 이차함수의 교점",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "short",
+      "question": "y = x² - 2x와 y = x의 교점의 x좌표 중 0이 아닌 값을 구하세요.",
+      "questionLatex": "y = x^2 - 2x,\\; y = x",
+      "answer": "3",
+      "answerLatex": "x = 3",
+      "solution": [
+        {
+          "step": 1,
+          "title": "연립하여 방정식 세우기",
+          "text": "x² - 2x = x로 놓습니다.",
+          "latex": "x^2 - 2x = x"
+        },
+        {
+          "step": 2,
+          "title": "이항 및 인수분해",
+          "text": "x² - 3x = 0 → x(x - 3) = 0",
+          "latex": "x(x - 3) = 0"
+        },
+        {
+          "step": 3,
+          "title": "해 구하기",
+          "text": "x = 0 또는 x = 3이므로 0이 아닌 값은 3",
+          "latex": "x = 0 \\;\\text{또는}\\; x = 3"
+        }
+      ],
+      "xp": 25,
+      "tags": ["이차함수", "교점", "연립방정식"]
+    },
+    {
+      "id": "FUN-M04",
+      "title": "역함수와 합성함수",
+      "difficulty": 4,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "f(x) = 3x - 6의 역함수를 g(x)라 할 때, g(9)의 값은?",
+      "questionLatex": "f(x) = 3x - 6,\\; g = f^{-1},\\; g(9) = ?",
+      "choices": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "5", "correct": true },
+        { "label": "D", "text": "6" }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "역함수 구하기",
+          "text": "y = 3x - 6에서 x에 대해 풀면",
+          "latex": "x = \\frac{y + 6}{3} \\Rightarrow g(x) = \\frac{x + 6}{3}"
+        },
+        {
+          "step": 2,
+          "title": "g(9) 계산",
+          "text": "g(9) = (9 + 6) / 3 = 15 / 3 = 5",
+          "latex": "g(9) = \\frac{9 + 6}{3} = \\frac{15}{3} = 5"
+        }
+      ],
+      "xp": 25,
+      "tags": ["역함수", "함수값"]
+    },
+    {
+      "id": "FUN-H01",
+      "title": "이차함수의 그래프와 직선",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "이차함수 y = x² - 6x + 8이 x축과 만나는 두 점 사이의 거리를 구하세요.",
+      "questionLatex": "y = x^2 - 6x + 8",
+      "answer": "2",
+      "answerLatex": "d = 2",
+      "solution": [
+        {
+          "step": 1,
+          "title": "x축과의 교점 구하기 (y=0)",
+          "text": "x² - 6x + 8 = 0을 풀어 인수분해합니다.",
+          "latex": "(x - 2)(x - 4) = 0"
+        },
+        {
+          "step": 2,
+          "title": "두 근",
+          "text": "x = 2 또는 x = 4",
+          "latex": "x = 2 \\;\\text{또는}\\; x = 4"
+        },
+        {
+          "step": 3,
+          "title": "두 점 사이의 거리",
+          "text": "거리 = |4 - 2| = 2",
+          "latex": "d = |4 - 2| = 2"
+        }
+      ],
+      "xp": 30,
+      "tags": ["이차함수", "x절편", "거리"]
+    },
+    {
+      "id": "FUN-H02",
+      "title": "지수함수 기초",
+      "difficulty": 6,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "방정식 2^(x+1) = 16을 풀어 x의 값을 구하세요.",
+      "questionLatex": "2^{x+1} = 16",
+      "answer": "3",
+      "answerLatex": "x = 3",
+      "solution": [
+        {
+          "step": 1,
+          "title": "밑을 통일하기",
+          "text": "16 = 2⁴이므로",
+          "latex": "2^{x+1} = 2^4"
+        },
+        {
+          "step": 2,
+          "title": "지수 비교",
+          "text": "밑이 같으면 지수가 같으므로",
+          "latex": "x + 1 = 4 \\Rightarrow x = 3"
+        }
+      ],
+      "xp": 35,
+      "tags": ["지수함수", "방정식"]
+    },
+    {
+      "id": "FUN-H03",
+      "title": "로그함수 기초",
+      "difficulty": 6,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "log₂(8) + log₂(4)의 값을 구하세요.",
+      "questionLatex": "\\log_2 8 + \\log_2 4",
+      "answer": "5",
+      "answerLatex": "\\log_2 8 + \\log_2 4 = 5",
+      "solution": [
+        {
+          "step": 1,
+          "title": "로그 덧셈 법칙",
+          "text": "log₂(8) + log₂(4) = log₂(8 × 4) = log₂(32)",
+          "latex": "\\log_2 8 + \\log_2 4 = \\log_2(8 \\times 4) = \\log_2 32"
+        },
+        {
+          "step": 2,
+          "title": "계산",
+          "text": "2⁵ = 32이므로 log₂(32) = 5",
+          "latex": "\\log_2 32 = \\log_2 2^5 = 5"
+        }
+      ],
+      "xp": 35,
+      "tags": ["로그함수", "로그 법칙"]
+    },
+    {
+      "id": "FUN-X01",
+      "title": "합성함수와 역함수의 관계",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "short",
+      "question": "f(x) = 2x + a, g(x) = bx - 3에 대해 f(g(x)) = x이면, a + b의 값을 구하세요.",
+      "questionLatex": "f(x) = 2x + a,\\; g(x) = bx - 3,\\; f(g(x)) = x",
+      "answer": "13/2",
+      "answerLatex": "a + b = \\frac{13}{2}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "f(g(x)) 계산",
+          "text": "f(g(x)) = 2(bx - 3) + a = 2bx - 6 + a",
+          "latex": "f(g(x)) = 2(bx - 3) + a = 2bx + (a - 6)"
+        },
+        {
+          "step": 2,
+          "title": "항등식 조건 적용",
+          "text": "f(g(x)) = x이므로 계수 비교: 2b = 1, a - 6 = 0",
+          "latex": "2b = 1 \\Rightarrow b = \\frac{1}{2},\\quad a = 6"
+        },
+        {
+          "step": 3,
+          "title": "a + b 계산",
+          "text": "a + b = 6 + 1/2 = 13/2",
+          "latex": "a + b = 6 + \\frac{1}{2} = \\frac{13}{2}"
+        }
+      ],
+      "xp": 40,
+      "tags": ["합성함수", "역함수", "항등식"]
+    },
+    {
+      "id": "FUN-X02",
+      "title": "이차함수의 매개변수 문제",
+      "difficulty": 7,
+      "tier": "expert",
+      "inputType": "formula",
+      "question": "이차함수 y = x² + mx + m이 항상 양수(y > 0)이기 위한 m의 범위를 구하세요.",
+      "questionLatex": "y = x^2 + mx + m > 0 \\;(\\text{모든 실수 } x \\text{에 대해})",
+      "answer": "0 < m < 4",
+      "answerLatex": "0 < m < 4",
+      "solution": [
+        {
+          "step": 1,
+          "title": "항상 양수 조건",
+          "text": "a > 0이고 판별식 D < 0이어야 합니다.",
+          "latex": "a = 1 > 0,\\; D = m^2 - 4m < 0"
+        },
+        {
+          "step": 2,
+          "title": "판별식 부등식 풀기",
+          "text": "m² - 4m = m(m-4) < 0",
+          "latex": "m(m - 4) < 0"
+        },
+        {
+          "step": 3,
+          "title": "m의 범위",
+          "text": "0 < m < 4",
+          "latex": "0 < m < 4"
+        }
+      ],
+      "xp": 50,
+      "tags": ["이차함수", "판별식", "매개변수"]
     }
   ]
 }

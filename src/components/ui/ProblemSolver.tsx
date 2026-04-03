@@ -5,17 +5,52 @@ import { BlockMath } from 'react-katex'
 import { useProblemStore } from '../../stores/useProblemStore'
 import { useGameStore } from '../../stores/useGameStore'
 import { calculateXp } from '../../utils/xp'
+import { getPlanetForProblem, PREFIX_MAP } from '../../utils/planet-lookup'
 import MultipleChoice from './MultipleChoice'
 import ShortAnswer from './ShortAnswer'
 import FormulaInput from './FormulaInput'
 import ResultBanner from './ResultBanner'
 import StepSolution from './StepSolution'
-import { solarSystem } from '../../data/solar-system'
+import type { Problem } from '../../types'
+
+import algebraData from '../../data/problems/algebra.json'
+import geometryData from '../../data/problems/geometry.json'
+import functionsData from '../../data/problems/functions.json'
+import calculusData from '../../data/problems/calculus.json'
+import probabilityData from '../../data/problems/probability.json'
+
+const SUBJECT_PROBLEMS: Record<string, Problem[]> = {
+  algebra: algebraData.problems as Problem[],
+  geometry: geometryData.problems as Problem[],
+  functions: functionsData.problems as Problem[],
+  calculus: calculusData.problems as Problem[],
+  probability: probabilityData.problems as Problem[],
+}
+
+function checkAnswer(answer: string, problem: Problem): boolean {
+  const normalizedAnswer = answer.trim().toLowerCase()
+  const correctAnswer = problem.answer.trim().toLowerCase()
+
+  if (problem.inputType === 'multiple') {
+    return normalizedAnswer === correctAnswer
+  }
+
+  // For short/formula: try numeric comparison
+  const numAnswer = parseFloat(normalizedAnswer)
+  const numCorrect = parseFloat(correctAnswer)
+  if (!isNaN(numAnswer) && !isNaN(numCorrect)) {
+    return Math.abs(numAnswer - numCorrect) < 0.01
+  }
+
+  // String comparison with whitespace normalization
+  return normalizedAnswer.replace(/\s+/g, '') === correctAnswer.replace(/\s+/g, '')
+}
 
 export default function ProblemSolver() {
   const problem = useProblemStore((s) => s.currentProblem)
   const closeProblem = useProblemStore((s) => s.closeProblem)
   const solveProblem = useGameStore((s) => s.solveProblem)
+  const checkAndUpdateUnlocks = useGameStore((s) => s.checkAndUpdateUnlocks)
   const streak = useGameStore((s) => s.progress.streak)
   const solved = useGameStore((s) => s.progress.solved)
 
@@ -34,15 +69,23 @@ export default function ProblemSolver() {
   const handleSubmit = useCallback((answer: string) => {
     if (!problem) return
 
-    const isCorrect = answer.toLowerCase() === problem.answer.toLowerCase()
+    const isCorrect = checkAnswer(answer, problem)
     const timeTaken = Math.floor((Date.now() - startTime) / 1000)
     const attempts = (solved[problem.id]?.attempts ?? 0) + 1
     const xpEarned = isCorrect ? calculateXp(problem.xp, attempts, streak) : 0
 
     solveProblem(problem.id, isCorrect, problem.xp, timeTaken)
+
+    if (isCorrect) {
+      const prefix = problem.id.slice(0, 3).toUpperCase()
+      const subjectId = PREFIX_MAP[prefix] ?? 'algebra'
+      const subjectProblems = SUBJECT_PROBLEMS[subjectId] ?? []
+      checkAndUpdateUnlocks(subjectId, subjectProblems)
+    }
+
     setResult({ correct: isCorrect, xp: xpEarned, time: timeTaken })
     setShowSolution(true)
-  }, [problem, startTime, solveProblem, streak, solved])
+  }, [problem, startTime, solveProblem, checkAndUpdateUnlocks, streak, solved])
 
   const handleRetry = () => {
     setResult(null)
@@ -51,10 +94,7 @@ export default function ProblemSolver() {
 
   if (!problem) return null
 
-  const subject = problem.id.slice(0, 3)
-  const planet = solarSystem.planets.find(p =>
-    p.id.toUpperCase().startsWith(subject)
-  ) ?? solarSystem.planets[0]
+  const planet = getPlanetForProblem(problem.id)
 
   const minutes = Math.floor(elapsed / 60)
   const seconds = elapsed % 60
@@ -81,7 +121,7 @@ export default function ProblemSolver() {
             onClick={closeProblem}
             style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '0.9rem' }}
           >
-            ← Back to space
+            ← 우주로 돌아가기
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span style={{
@@ -105,7 +145,7 @@ export default function ProblemSolver() {
         {/* Problem content */}
         <div style={{ maxWidth: '700px', margin: '0 auto', padding: '2rem 1.5rem' }}>
           <div style={{ color: '#94a3b8', fontSize: '0.8rem', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Problem #{problem.id}
+            문제 #{problem.id}
           </div>
           <div style={{ color: '#f1f5f9', fontSize: '1.2rem', fontWeight: 600, marginBottom: '1.5rem' }}>
             {problem.title}
@@ -158,7 +198,7 @@ export default function ProblemSolver() {
                   cursor: 'pointer', background: 'transparent',
                 }}
               >
-                ← Back to space
+                ← 우주로 돌아가기
               </button>
             </div>
           )}

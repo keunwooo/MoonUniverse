@@ -37,10 +37,10 @@ export default function ResultBanner({ correct, xpEarned, time, onRetry }: Props
       </div>
       <div style={{ flex: 1 }}>
         <div style={{ color: correct ? '#4ade80' : '#f87171', fontWeight: 600, fontSize: '1.05rem' }}>
-          {correct ? 'Correct!' : 'Incorrect'}
+          {correct ? '정답!' : '오답'}
         </div>
         <div style={{ color: correct ? '#86efac' : '#fca5a5', fontSize: '0.8rem' }}>
-          {correct ? `+${xpEarned} XP · Solved in ${timeStr}` : `Time: ${timeStr}`}
+          {correct ? `+${xpEarned} XP · 풀이 시간 ${timeStr}` : `풀이 시간: ${timeStr}`}
         </div>
       </div>
       {!correct && onRetry && (
@@ -56,7 +56,7 @@ export default function ResultBanner({ correct, xpEarned, time, onRetry }: Props
             fontSize: '0.85rem',
           }}
         >
-          Retry
+          다시 풀기
         </button>
       )}
     </motion.div>
