@@ -1,16 +1,22 @@
+import { useState, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import SolarSystem from './components/3d/SolarSystem'
+import CameraController from './components/3d/CameraController'
 import { useProblemStore } from './stores/useProblemStore'
+import { solarSystem } from './data/solar-system'
 
 export default function App() {
   const setHoveredProblem = useProblemStore((s) => s.setHoveredProblem)
   const setCurrentProblem = useProblemStore((s) => s.setCurrentProblem)
+  const [cameraTarget, setCameraTarget] = useState<[number, number, number] | null>(null)
 
-  const handlePlanetClick = (planetId: string) => {
-    console.log('Planet clicked:', planetId)
-  }
+  const handlePlanetClick = useCallback((planetId: string) => {
+    const planet = solarSystem.planets.find(p => p.id === planetId)
+    if (planet) {
+      setCameraTarget([planet.orbitRadius * 0.7, 2, planet.orbitRadius * 0.7])
+    }
+  }, [])
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -20,13 +26,9 @@ export default function App() {
           onStarHover={setHoveredProblem}
           onStarClick={setCurrentProblem}
         />
-        <OrbitControls enablePan={false} minDistance={10} maxDistance={100} />
+        <CameraController target={cameraTarget} />
         <EffectComposer>
-          <Bloom
-            luminanceThreshold={0.2}
-            luminanceSmoothing={0.9}
-            intensity={1.5}
-          />
+          <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} intensity={1.5} />
         </EffectComposer>
       </Canvas>
     </div>
