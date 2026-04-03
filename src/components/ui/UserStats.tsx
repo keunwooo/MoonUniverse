@@ -1,4 +1,5 @@
 import { useGameStore } from '../../stores/useGameStore'
+import Guide from './Guide'
 
 const XP_PER_LEVEL = 200
 
@@ -34,6 +35,28 @@ export default function UserStats() {
         <span style={{ color: '#f87171', fontSize: '0.7rem' }}>오답 {progress.stats.totalWrong}</span>
         <span style={{ color: '#60a5fa', fontSize: '0.7rem' }}>연속 {progress.streak}</span>
       </div>
+      <div style={{ marginTop: '0.5rem', textAlign: 'right' }}>
+        <button
+          onClick={() => {
+            if (window.confirm('진행도를 초기화하시겠습니까?')) {
+              useGameStore.getState().reset()
+              localStorage.removeItem('moonuniverse-progress')
+              window.location.reload()
+            }
+          }}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: '#475569',
+            fontSize: '0.65rem',
+            cursor: 'pointer',
+            padding: '2px 4px',
+          }}
+        >
+          초기화
+        </button>
+      </div>
+      <Guide />
     </div>
   )
 }

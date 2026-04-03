@@ -24,12 +24,14 @@ interface Props {
   onPlanetClick: (planetId: string) => void
   onStarHover: (problem: Problem | null) => void
   onStarClick: (problem: Problem) => void
+  activePlanet: string | null
 }
 
-function PlanetStars({ planet, onStarHover, onStarClick }: {
+function PlanetStars({ planet, onStarHover, onStarClick, dimmed }: {
   planet: PlanetConfig
   onStarHover: (problem: Problem | null) => void
   onStarClick: (problem: Problem) => void
+  dimmed: boolean
 }) {
   const problems = problemMap[planet.id] ?? []
   const stars = useStarPositions(problems, planet)
@@ -43,13 +45,14 @@ function PlanetStars({ planet, onStarHover, onStarClick }: {
           position={star.position}
           onHover={onStarHover}
           onClick={onStarClick}
+          dimmed={dimmed}
         />
       ))}
     </>
   )
 }
 
-export default function SolarSystem({ onPlanetClick, onStarHover, onStarClick }: Props) {
+export default function SolarSystem({ onPlanetClick, onStarHover, onStarClick, activePlanet }: Props) {
   return (
     <>
       <Skybox />
@@ -62,6 +65,7 @@ export default function SolarSystem({ onPlanetClick, onStarHover, onStarClick }:
             planet={planet}
             onStarHover={onStarHover}
             onStarClick={onStarClick}
+            dimmed={activePlanet !== null && activePlanet !== planet.id}
           />
         </group>
       ))}

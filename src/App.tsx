@@ -6,6 +6,7 @@ import CameraController from './components/3d/CameraController'
 import HUD from './components/ui/HUD'
 import ProblemPreview from './components/ui/ProblemPreview'
 import ProblemSolver from './components/ui/ProblemSolver'
+import NextStarHint from './components/ui/NextStarHint'
 import { useProblemStore } from './stores/useProblemStore'
 import { solarSystem } from './data/solar-system'
 
@@ -33,6 +34,11 @@ export default function App() {
   }, [currentProblem, closeProblem, cameraTarget])
 
   const handlePlanetSelect = useCallback((planetId: string) => {
+    if (!planetId) {
+      setActivePlanet(null)
+      setCameraTarget(null)
+      return
+    }
     setActivePlanet(planetId)
     const planet = solarSystem.planets.find(p => p.id === planetId)
     if (planet) {
@@ -47,6 +53,7 @@ export default function App() {
           onPlanetClick={handlePlanetSelect}
           onStarHover={setHoveredProblem}
           onStarClick={setCurrentProblem}
+          activePlanet={activePlanet}
         />
         <CameraController target={cameraTarget} />
         <EffectComposer>
@@ -55,7 +62,11 @@ export default function App() {
       </Canvas>
       <HUD activePlanet={activePlanet} onPlanetSelect={handlePlanetSelect} />
       <ProblemPreview />
-      <ProblemSolver />
+      {currentProblem && <ProblemSolver key={currentProblem.id} />}
+      <NextStarHint
+        activePlanet={activePlanet}
+        onNavigate={(problem) => setCurrentProblem(problem)}
+      />
     </div>
   )
 }

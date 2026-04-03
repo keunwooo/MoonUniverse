@@ -8,6 +8,22 @@ interface Props {
 export default function SubjectNav({ activePlanet, onPlanetSelect }: Props) {
   return (
     <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <button
+        onClick={() => onPlanetSelect('')}
+        style={{
+          background: !activePlanet ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)',
+          border: `1px solid ${!activePlanet ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.1)'}`,
+          color: !activePlanet ? '#f1f5f9' : '#64748b',
+          padding: '0.4rem 0.8rem',
+          borderRadius: '99px',
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          cursor: 'pointer',
+          transition: 'all 0.2s',
+        }}
+      >
+        🌌 전체
+      </button>
       {solarSystem.planets.map((planet) => (
         <button
           key={planet.id}

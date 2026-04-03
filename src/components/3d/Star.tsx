@@ -12,6 +12,7 @@ interface Props {
   position: [number, number, number]
   onHover: (problem: Problem | null) => void
   onClick: (problem: Problem) => void
+  dimmed?: boolean
 }
 
 const TIER_ORDER: Tier[] = ['tutorial', 'easy', 'medium', 'hard', 'expert']
@@ -23,7 +24,7 @@ const TIER_KO: Record<string, string> = {
   expert: '전문가',
 }
 
-export default function Star({ problem, position, onHover, onClick }: Props) {
+export default function Star({ problem, position, onHover, onClick, dimmed = false }: Props) {
   const ref = useRef<Mesh>(null)
   const ringRef = useRef<Mesh>(null)
   const [hovered, setHovered] = useState(false)
@@ -89,7 +90,10 @@ export default function Star({ problem, position, onHover, onClick }: Props) {
   let color: string
   let emissiveIntensity: number
 
-  if (isLocked) {
+  if (dimmed) {
+    color = '#ffffff'
+    emissiveIntensity = 0.02
+  } else if (isLocked) {
     color = '#6366f1' // indigo tint instead of gray — visible but distinct
     emissiveIntensity = 0.15
   } else if (solved?.correct) {
@@ -106,6 +110,7 @@ export default function Star({ problem, position, onHover, onClick }: Props) {
       <mesh
         ref={ref}
         onPointerOver={(e) => {
+          if (dimmed) return
           e.stopPropagation()
           setHovered(true)
           if (isLocked) {
@@ -117,11 +122,13 @@ export default function Star({ problem, position, onHover, onClick }: Props) {
           }
         }}
         onPointerOut={() => {
+          if (dimmed) return
           setHovered(false)
           onHover(null)
           document.body.style.cursor = 'default'
         }}
         onClick={(e) => {
+          if (dimmed) return
           e.stopPropagation()
           if (!isLocked) onClick(problem)
         }}
@@ -131,8 +138,8 @@ export default function Star({ problem, position, onHover, onClick }: Props) {
           color={color}
           emissive={color}
           emissiveIntensity={emissiveIntensity}
-          opacity={isLocked ? 0.6 : 1}
-          transparent={isLocked}
+          opacity={dimmed ? 0.2 : isLocked ? 0.6 : 1}
+          transparent={dimmed || isLocked}
         />
       </mesh>
 
