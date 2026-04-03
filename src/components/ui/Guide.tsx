@@ -1,6 +1,49 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const GUIDE_SECTIONS = [
+  {
+    category: '조작법',
+    color: '#60a5fa',
+    items: [
+      { icon: '🖱️', title: '좌클릭 드래그', desc: '시점 회전' },
+      { icon: '🤚', title: '우클릭 드래그', desc: '카메라 이동' },
+      { icon: '🔍', title: '스크롤', desc: '확대 / 축소' },
+      { icon: '⌨️', title: 'ESC', desc: '뒤로 가기' },
+    ],
+  },
+  {
+    category: '탐색',
+    color: '#a78bfa',
+    items: [
+      { icon: '🪐', title: '행성 클릭', desc: '해당 과목으로 이동' },
+      { icon: '🌙', title: '달 클릭', desc: '입문 튜토리얼 시작' },
+      { icon: '☀️', title: '태양 클릭', desc: '최종 도전 (해금 필요)' },
+      { icon: '🏷️', title: '상단 메뉴', desc: '과목 빠른 이동' },
+    ],
+  },
+  {
+    category: '문제 풀기',
+    color: '#4ade80',
+    items: [
+      { icon: '⭐', title: '별 호버', desc: '문제 미리보기 표시' },
+      { icon: '✏️', title: '별 클릭', desc: '문제 풀이 화면 진입' },
+      { icon: '🔒', title: '보라색 별', desc: '이전 단계 완료 필요' },
+      { icon: '💡', title: '추천 문제', desc: '하단의 추천 버튼 활용' },
+    ],
+  },
+  {
+    category: '성장',
+    color: '#fbbf24',
+    items: [
+      { icon: '✨', title: 'XP 획득', desc: '정답 시 난이도별 XP' },
+      { icon: '🔥', title: '연속 보너스', desc: '3연속 정답 시 1.5배' },
+      { icon: '📈', title: '티어 해금', desc: '70% 달성 시 다음 단계' },
+      { icon: '☀️', title: '최종 도전', desc: '3개 행성 심화 달성' },
+    ],
+  },
+]
+
 export default function Guide() {
   const [open, setOpen] = useState(false)
 
@@ -31,92 +74,141 @@ export default function Guide() {
             exit={{ opacity: 0 }}
             style={{
               position: 'fixed', inset: 0, zIndex: 100,
-              background: 'rgba(0,0,0,0.85)',
+              background: 'rgba(0,0,0,0.8)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              backdropFilter: 'blur(4px)',
+              backdropFilter: 'blur(8px)',
             }}
             onClick={() => setOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
               style={{
-                background: 'rgba(15,23,42,0.98)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '16px',
-                padding: '2rem',
-                maxWidth: '480px',
-                width: '90%',
-                maxHeight: '80vh',
+                background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(10,15,30,0.99) 100%)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '20px',
+                padding: '2rem 1.8rem',
+                maxWidth: '560px',
+                width: '92%',
+                maxHeight: '85vh',
                 overflowY: 'auto',
               }}
             >
-              <h2 style={{ color: '#f1f5f9', fontSize: '1.3rem', marginBottom: '1.5rem', textAlign: 'center' }}>
-                🌌 MoonUniverse 사용 가이드
-              </h2>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <GuideItem icon="🖱️" title="기본 조작">
-                  마우스 드래그로 시점 회전, 스크롤로 확대/축소
-                </GuideItem>
-                <GuideItem icon="🪐" title="행성 선택">
-                  행성을 클릭하거나 상단 메뉴에서 과목을 선택하세요
-                </GuideItem>
-                <GuideItem icon="⭐" title="문제 풀기">
-                  빛나는 별 위에 마우스를 올리면 미리보기, 클릭하면 문제 풀이
-                </GuideItem>
-                <GuideItem icon="🔒" title="잠긴 별">
-                  보라색 별은 이전 단계를 완료해야 풀 수 있어요
-                </GuideItem>
-                <GuideItem icon="🌙" title="달 (입문)">
-                  행성 주위를 도는 달은 입문 튜토리얼이에요
-                </GuideItem>
-                <GuideItem icon="📈" title="진행도">
-                  문제를 풀면 XP를 얻고 레벨업! 연속 정답 시 보너스
-                </GuideItem>
-                <GuideItem icon="☀️" title="최종 도전">
-                  3개 이상 행성에서 심화 단계 도달 시 태양 도전 해금
-                </GuideItem>
-                <GuideItem icon="⌨️" title="단축키">
-                  ESC: 뒤로 가기 / Enter: 답 제출
-                </GuideItem>
+              {/* Header */}
+              <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                <div style={{ fontSize: '2rem', marginBottom: '0.3rem' }}>🌌</div>
+                <h2 style={{
+                  color: '#f1f5f9',
+                  fontSize: '1.4rem',
+                  fontWeight: 800,
+                  margin: 0,
+                  letterSpacing: '1px',
+                }}>
+                  MoonUniverse
+                </h2>
+                <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '0.3rem' }}>
+                  우주를 탐험하며 수학을 정복하세요
+                </p>
               </div>
 
+              {/* Sections */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                {GUIDE_SECTIONS.map((section, si) => (
+                  <motion.div
+                    key={section.category}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: si * 0.08 }}
+                  >
+                    {/* Section header */}
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: '0.5rem',
+                      marginBottom: '0.6rem',
+                    }}>
+                      <div style={{
+                        width: '3px', height: '16px',
+                        background: section.color,
+                        borderRadius: '2px',
+                      }} />
+                      <span style={{
+                        color: section.color,
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        letterSpacing: '1px',
+                        textTransform: 'uppercase',
+                      }}>
+                        {section.category}
+                      </span>
+                    </div>
+
+                    {/* Items grid */}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                      gap: '0.5rem',
+                    }}>
+                      {section.items.map((item) => (
+                        <div key={item.title} style={{
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(255,255,255,0.06)',
+                          borderRadius: '10px',
+                          padding: '0.7rem 0.8rem',
+                          display: 'flex',
+                          gap: '0.6rem',
+                          alignItems: 'center',
+                        }}>
+                          <span style={{ fontSize: '1.2rem', flexShrink: 0 }}>{item.icon}</span>
+                          <div>
+                            <div style={{
+                              color: '#e2e8f0',
+                              fontSize: '0.8rem',
+                              fontWeight: 600,
+                              lineHeight: 1.2,
+                            }}>
+                              {item.title}
+                            </div>
+                            <div style={{
+                              color: '#64748b',
+                              fontSize: '0.7rem',
+                              lineHeight: 1.3,
+                              marginTop: '1px',
+                            }}>
+                              {item.desc}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Close button */}
               <button
                 onClick={() => setOpen(false)}
                 style={{
                   marginTop: '1.5rem',
                   width: '100%',
-                  padding: '0.7rem',
-                  background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                  padding: '0.75rem',
+                  background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
                   border: 'none',
-                  borderRadius: '8px',
+                  borderRadius: '10px',
                   color: '#fff',
                   fontSize: '0.95rem',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
+                  letterSpacing: '1px',
                 }}
               >
-                시작하기
+                탐험 시작하기 🚀
               </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
-}
-
-function GuideItem({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
-  return (
-    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-      <span style={{ fontSize: '1.3rem', lineHeight: 1 }}>{icon}</span>
-      <div>
-        <div style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '0.9rem', marginBottom: '2px' }}>{title}</div>
-        <div style={{ color: '#94a3b8', fontSize: '0.8rem', lineHeight: 1.5 }}>{children}</div>
-      </div>
-    </div>
   )
 }
