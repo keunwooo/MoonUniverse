@@ -4,6 +4,7 @@ import { Html, useTexture } from '@react-three/drei'
 import type { Group } from 'three'
 import type { PlanetConfig } from '../../types'
 import Moon from './Moon'
+import { setPlanetPosition } from '../../utils/planet-positions'
 
 interface Props {
   config: PlanetConfig
@@ -29,8 +30,11 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
   useFrame((_, delta) => {
     angleRef.current += delta * (0.1 / config.orbitRadius)
     if (groupRef.current) {
-      groupRef.current.position.x = Math.cos(angleRef.current) * config.orbitRadius
-      groupRef.current.position.z = Math.sin(angleRef.current) * config.orbitRadius
+      const x = Math.cos(angleRef.current) * config.orbitRadius
+      const z = Math.sin(angleRef.current) * config.orbitRadius
+      groupRef.current.position.x = x
+      groupRef.current.position.z = z
+      setPlanetPosition(config.id, x, 0, z)
     }
   })
 

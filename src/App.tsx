@@ -12,6 +12,7 @@ import { useGameStore } from './stores/useGameStore'
 import { solarSystem } from './data/solar-system'
 import { getStarPosition } from './hooks/useStarPositions'
 import { PREFIX_MAP } from './utils/planet-lookup'
+import { getPlanetPosition } from './utils/planet-positions'
 import type { Problem } from './types'
 
 import algebraData from './data/problems/algebra.json'
@@ -62,10 +63,15 @@ export default function App() {
     if (position) {
       setCameraTarget(position)
     } else {
-      // SubjectNav click: target a point on the orbit ring
-      const planet = solarSystem.planets.find(p => p.id === planetId)
-      if (planet) {
-        setCameraTarget([planet.orbitRadius, 0, 0])
+      // SubjectNav click: use live planet position from registry
+      const livePos = getPlanetPosition(planetId)
+      if (livePos) {
+        setCameraTarget(livePos)
+      } else {
+        const planet = solarSystem.planets.find(p => p.id === planetId)
+        if (planet) {
+          setCameraTarget([planet.orbitRadius, 0, 0])
+        }
       }
     }
   }, [])
