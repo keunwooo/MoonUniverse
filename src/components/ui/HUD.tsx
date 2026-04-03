@@ -2,6 +2,7 @@ import SubjectNav from './SubjectNav'
 import UserStats from './UserStats'
 import PlanetInfo from './PlanetInfo'
 import MiniMap from './MiniMap'
+import MoonBrand from './MoonBrand'
 
 interface Props {
   activePlanet: string | null
@@ -17,6 +18,8 @@ export default function HUD({ activePlanet, onPlanetSelect }: Props) {
       padding: '1rem',
       zIndex: 10,
     }}>
+      <MoonBrand />
+
       <div style={{ position: 'absolute', top: '1rem', left: '1rem', pointerEvents: 'auto' }}>
         <SubjectNav activePlanet={activePlanet} onPlanetSelect={onPlanetSelect} />
       </div>
