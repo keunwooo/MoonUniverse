@@ -1,0 +1,100 @@
+{
+  "subject": "calculus",
+  "problems": [
+    {
+      "id": "CAL-T01",
+      "title": "Limit Concept",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "What is the limit of (x² - 1)/(x - 1) as x approaches 1?",
+      "questionLatex": "\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}",
+      "choices": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Undefined"
+        }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Factor numerator",
+          "text": "x² - 1 = (x+1)(x-1)",
+          "latex": "\\frac{(x+1)(x-1)}{x-1}"
+        },
+        {
+          "step": 2,
+          "title": "Cancel",
+          "text": "Simplify to x + 1",
+          "latex": "= x + 1"
+        },
+        {
+          "step": 3,
+          "title": "Evaluate",
+          "text": "Substitute x = 1",
+          "latex": "1 + 1 = 2"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "limits"
+      ]
+    },
+    {
+      "id": "CAL-T02",
+      "title": "Slope of Tangent",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "The derivative of f(x) = 3x is?",
+      "questionLatex": "f(x) = 3x",
+      "choices": [
+        {
+          "label": "A",
+          "text": "3",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "3x"
+        },
+        {
+          "label": "C",
+          "text": "x"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Power rule",
+          "text": "d/dx(ax) = a",
+          "latex": "\\frac{d}{dx}(3x) = 3"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "derivative",
+        "basic"
+      ]
+    }
+  ]
+}

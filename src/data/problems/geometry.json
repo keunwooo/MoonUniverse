@@ -1,0 +1,157 @@
+{
+  "subject": "geometry",
+  "problems": [
+    {
+      "id": "GEO-T01",
+      "title": "Triangle Angles",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "A triangle has angles 60° and 80°. What is the third angle?",
+      "choices": [
+        {
+          "label": "A",
+          "text": "40°",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "50°"
+        },
+        {
+          "label": "C",
+          "text": "60°"
+        },
+        {
+          "label": "D",
+          "text": "30°"
+        }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Sum of angles",
+          "text": "Triangle angles sum to 180°",
+          "latex": "\\angle_1 + \\angle_2 + \\angle_3 = 180°"
+        },
+        {
+          "step": 2,
+          "title": "Calculate",
+          "text": "180 - 60 - 80 = 40",
+          "latex": "180° - 60° - 80° = 40°"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "triangle",
+        "angles"
+      ]
+    },
+    {
+      "id": "GEO-T02",
+      "title": "Rectangle Area",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "What is the area of a rectangle with width 5 and height 8?",
+      "choices": [
+        {
+          "label": "A",
+          "text": "13"
+        },
+        {
+          "label": "B",
+          "text": "26"
+        },
+        {
+          "label": "C",
+          "text": "40",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "45"
+        }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Area formula",
+          "text": "Area = width × height",
+          "latex": "A = w \\times h"
+        },
+        {
+          "step": 2,
+          "title": "Calculate",
+          "text": "5 × 8 = 40",
+          "latex": "A = 5 \\times 8 = 40"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "rectangle",
+        "area"
+      ]
+    },
+    {
+      "id": "GEO-E01",
+      "title": "Pythagorean Theorem",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "short",
+      "question": "A right triangle has legs 3 and 4. What is the hypotenuse?",
+      "questionLatex": "a^2 + b^2 = c^2",
+      "answer": "5",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Apply theorem",
+          "text": "c² = 3² + 4²",
+          "latex": "c^2 = 9 + 16 = 25"
+        },
+        {
+          "step": 2,
+          "title": "Solve",
+          "text": "c = √25 = 5",
+          "latex": "c = \\sqrt{25} = 5"
+        }
+      ],
+      "xp": 15,
+      "tags": [
+        "pythagorean",
+        "right-triangle"
+      ]
+    },
+    {
+      "id": "GEO-M01",
+      "title": "Circle Area",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "short",
+      "question": "What is the area of a circle with radius 7? (Round to nearest integer)",
+      "questionLatex": "A = \\pi r^2",
+      "answer": "154",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Apply formula",
+          "text": "A = π × 7²",
+          "latex": "A = \\pi \\times 49"
+        },
+        {
+          "step": 2,
+          "title": "Calculate",
+          "text": "A ≈ 153.94 ≈ 154",
+          "latex": "A \\approx 154"
+        }
+      ],
+      "xp": 20,
+      "tags": [
+        "circle",
+        "area"
+      ]
+    }
+  ]
+}

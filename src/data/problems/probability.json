@@ -1,0 +1,87 @@
+{
+  "subject": "probability",
+  "problems": [
+    {
+      "id": "PRO-T01",
+      "title": "Coin Flip",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "What is the probability of getting heads on a fair coin?",
+      "choices": [
+        {
+          "label": "A",
+          "text": "1/4"
+        },
+        {
+          "label": "B",
+          "text": "1/2",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "1/3"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Count outcomes",
+          "text": "2 possible: heads or tails",
+          "latex": "P = \\frac{1}{2}"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "basic",
+        "coin"
+      ]
+    },
+    {
+      "id": "PRO-T02",
+      "title": "Dice Roll",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "What is the probability of rolling a 6 on a fair die?",
+      "choices": [
+        {
+          "label": "A",
+          "text": "1/2"
+        },
+        {
+          "label": "B",
+          "text": "1/3"
+        },
+        {
+          "label": "C",
+          "text": "1/6",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "1/12"
+        }
+      ],
+      "answer": "C",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Count outcomes",
+          "text": "6 equally likely faces",
+          "latex": "P(6) = \\frac{1}{6}"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "basic",
+        "dice"
+      ]
+    }
+  ]
+}

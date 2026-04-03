@@ -1,0 +1,238 @@
+{
+  "subject": "algebra",
+  "problems": [
+    {
+      "id": "ALG-T01",
+      "title": "Simple Equation",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "Solve: 2x = 10",
+      "questionLatex": "2x = 10",
+      "choices": [
+        {
+          "label": "A",
+          "text": "x = 3"
+        },
+        {
+          "label": "B",
+          "text": "x = 5",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "x = 8"
+        },
+        {
+          "label": "D",
+          "text": "x = 20"
+        }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Divide both sides by 2",
+          "text": "2x ÷ 2 = 10 ÷ 2",
+          "latex": "\\frac{2x}{2} = \\frac{10}{2}"
+        },
+        {
+          "step": 2,
+          "title": "Simplify",
+          "text": "x = 5",
+          "latex": "x = 5"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "linear",
+        "basic"
+      ]
+    },
+    {
+      "id": "ALG-T02",
+      "title": "Variable Both Sides",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "Solve: 3x + 2 = 14",
+      "questionLatex": "3x + 2 = 14",
+      "choices": [
+        {
+          "label": "A",
+          "text": "x = 4",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "x = 6"
+        },
+        {
+          "label": "C",
+          "text": "x = 3"
+        },
+        {
+          "label": "D",
+          "text": "x = 5"
+        }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Subtract 2",
+          "text": "3x = 14 - 2 = 12",
+          "latex": "3x = 12"
+        },
+        {
+          "step": 2,
+          "title": "Divide by 3",
+          "text": "x = 12 ÷ 3 = 4",
+          "latex": "x = 4"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "linear",
+        "basic"
+      ]
+    },
+    {
+      "id": "ALG-E01",
+      "title": "Linear Equation",
+      "difficulty": 2,
+      "tier": "easy",
+      "inputType": "multiple",
+      "question": "Solve: 5x - 3 = 2x + 9",
+      "questionLatex": "5x - 3 = 2x + 9",
+      "choices": [
+        {
+          "label": "A",
+          "text": "x = 2"
+        },
+        {
+          "label": "B",
+          "text": "x = 4",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "x = 3"
+        },
+        {
+          "label": "D",
+          "text": "x = 6"
+        }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Move x terms",
+          "text": "5x - 2x = 9 + 3",
+          "latex": "3x = 12"
+        },
+        {
+          "step": 2,
+          "title": "Divide",
+          "text": "x = 4",
+          "latex": "x = 4"
+        }
+      ],
+      "xp": 15,
+      "tags": [
+        "linear"
+      ]
+    },
+    {
+      "id": "ALG-M01",
+      "title": "Quadratic Equation",
+      "difficulty": 3,
+      "tier": "medium",
+      "inputType": "multiple",
+      "question": "Solve: x² - 5x + 6 = 0",
+      "questionLatex": "x^2 - 5x + 6 = 0",
+      "choices": [
+        {
+          "label": "A",
+          "text": "x = 1, x = 6"
+        },
+        {
+          "label": "B",
+          "text": "x = 2, x = 3",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "x = -2, x = -3"
+        },
+        {
+          "label": "D",
+          "text": "x = 5, x = 1"
+        }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Identify form",
+          "text": "ax² + bx + c where a=1, b=-5, c=6",
+          "latex": "a=1,\\; b=-5,\\; c=6"
+        },
+        {
+          "step": 2,
+          "title": "Factor",
+          "text": "Find numbers that multiply to 6 and add to -5",
+          "latex": "(x-2)(x-3) = 0"
+        },
+        {
+          "step": 3,
+          "title": "Solve",
+          "text": "Set each factor to zero",
+          "latex": "x = 2 \\;\\text{or}\\; x = 3"
+        }
+      ],
+      "xp": 20,
+      "tags": [
+        "quadratic",
+        "factoring"
+      ]
+    },
+    {
+      "id": "ALG-H01",
+      "title": "Quadratic Formula",
+      "difficulty": 5,
+      "tier": "hard",
+      "inputType": "short",
+      "question": "Using the quadratic formula, solve: 2x² + 3x - 2 = 0. Enter the positive root.",
+      "questionLatex": "2x^2 + 3x - 2 = 0",
+      "answer": "0.5",
+      "answerLatex": "x = \\frac{1}{2}",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Identify coefficients",
+          "text": "a=2, b=3, c=-2",
+          "latex": "a=2,\\; b=3,\\; c=-2"
+        },
+        {
+          "step": 2,
+          "title": "Apply formula",
+          "text": "x = (-b ± √(b²-4ac)) / 2a",
+          "latex": "x = \\frac{-3 \\pm \\sqrt{9+16}}{4} = \\frac{-3 \\pm 5}{4}"
+        },
+        {
+          "step": 3,
+          "title": "Two solutions",
+          "text": "x = 1/2 or x = -2",
+          "latex": "x = \\frac{1}{2} \\;\\text{or}\\; x = -2"
+        }
+      ],
+      "xp": 35,
+      "tags": [
+        "quadratic",
+        "formula"
+      ]
+    }
+  ]
+}

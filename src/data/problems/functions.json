@@ -1,0 +1,100 @@
+{
+  "subject": "functions",
+  "problems": [
+    {
+      "id": "FUN-T01",
+      "title": "Function Evaluation",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "If f(x) = 2x + 1, what is f(3)?",
+      "questionLatex": "f(x) = 2x + 1",
+      "choices": [
+        {
+          "label": "A",
+          "text": "5"
+        },
+        {
+          "label": "B",
+          "text": "7",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "answer": "B",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Substitute x=3",
+          "text": "f(3) = 2(3) + 1",
+          "latex": "f(3) = 2(3) + 1"
+        },
+        {
+          "step": 2,
+          "title": "Calculate",
+          "text": "f(3) = 7",
+          "latex": "f(3) = 6 + 1 = 7"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "evaluation",
+        "linear"
+      ]
+    },
+    {
+      "id": "FUN-T02",
+      "title": "Domain Basics",
+      "difficulty": 1,
+      "tier": "tutorial",
+      "inputType": "multiple",
+      "question": "What value of x makes f(x) = 1/x undefined?",
+      "questionLatex": "f(x) = \\frac{1}{x}",
+      "choices": [
+        {
+          "label": "A",
+          "text": "x = 0",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "x = 1"
+        },
+        {
+          "label": "C",
+          "text": "x = -1"
+        },
+        {
+          "label": "D",
+          "text": "No value"
+        }
+      ],
+      "answer": "A",
+      "solution": [
+        {
+          "step": 1,
+          "title": "Division by zero",
+          "text": "A fraction is undefined when denominator = 0",
+          "latex": "x \\neq 0"
+        },
+        {
+          "step": 2,
+          "title": "Answer",
+          "text": "x = 0 makes f(x) undefined",
+          "latex": "f(0) = \\frac{1}{0} \\;\\text{(undefined)}"
+        }
+      ],
+      "xp": 10,
+      "tags": [
+        "domain"
+      ]
+    }
+  ]
+}
