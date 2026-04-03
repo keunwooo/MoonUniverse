@@ -20,16 +20,14 @@ export default function CameraController({ target, onArrived }: Props) {
       const [x, y, z] = target
       targetLookAt.current.set(x, y, z)
 
-      // Camera offset: always behind the planet (opposite side from sun)
-      // Direction from sun (0,0,0) to planet, then push camera further out
+      // Camera: slightly above and behind the planet, looking at it
       const len = Math.sqrt(x * x + z * z) || 1
       const dirX = x / len
       const dirZ = z / len
-      const dist = 15
       targetPos.current.set(
-        x + dirX * dist,
-        8,
-        z + dirZ * dist
+        x + dirX * 6,
+        5,
+        z + dirZ * 6
       )
       isAnimating.current = true
     } else {
