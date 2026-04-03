@@ -1,11 +1,11 @@
-import { useRef, useMemo } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { useTexture } from '@react-three/drei'
 import type { Mesh } from 'three'
-import { getPlanetTexture } from '../../utils/procedural-textures'
 
 export default function Sun() {
   const ref = useRef<Mesh>(null)
-  const texture = useMemo(() => getPlanetTexture('sun'), [])
+  const texture = useTexture('/textures/sun.jpg')
 
   useFrame((_, delta) => {
     if (ref.current) {

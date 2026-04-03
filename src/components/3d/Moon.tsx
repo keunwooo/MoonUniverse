@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import type { Mesh } from 'three'
 import { useGameStore } from '../../stores/useGameStore'
-import { getPlanetTexture } from '../../utils/procedural-textures'
+import { useTexture } from '@react-three/drei'
 import type { Problem } from '../../types'
 
 import algebraData from '../../data/problems/algebra.json'
@@ -42,7 +42,7 @@ export default function Moon({ parentPosition, color, name, subjectId, onClick }
   const tutorialCount = tutorials.length
   const solvedTutorials = tutorials.filter(p => solved[p.id]?.correct).length
   const allComplete = tutorialCount > 0 && solvedTutorials >= tutorialCount
-  const moonTexture = useMemo(() => getPlanetTexture('moon'), [])
+  const moonTexture = useTexture('/textures/moon.jpg')
 
   useFrame((_, delta) => {
     angleRef.current += delta * 1.5

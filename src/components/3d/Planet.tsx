@@ -1,10 +1,9 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Html } from '@react-three/drei'
+import { Html, useTexture } from '@react-three/drei'
 import type { Group } from 'three'
 import type { PlanetConfig } from '../../types'
 import Moon from './Moon'
-import { getPlanetTexture } from '../../utils/procedural-textures'
 
 interface Props {
   config: PlanetConfig
@@ -17,7 +16,15 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
   const [hovered, setHovered] = useState(false)
   const angleRef = useRef(Math.random() * Math.PI * 2)
 
-  const texture = useMemo(() => getPlanetTexture(config.id), [config.id])
+  // Map each subject to a real planet texture
+  const TEXTURE_MAP: Record<string, string> = {
+    algebra: '/textures/mercury.jpg',
+    geometry: '/textures/earth.jpg',
+    functions: '/textures/mars.jpg',
+    calculus: '/textures/jupiter.jpg',
+    probability: '/textures/saturn.jpg',
+  }
+  const texture = useTexture(TEXTURE_MAP[config.id] ?? '/textures/mercury.jpg')
 
   useFrame((_, delta) => {
     angleRef.current += delta * (0.1 / config.orbitRadius)
