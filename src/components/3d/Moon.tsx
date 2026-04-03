@@ -78,8 +78,9 @@ export default function Moon({ parentPosition, color, name, subjectId, onClick }
         <sphereGeometry args={[0.5, 16, 16]} />
         <meshStandardMaterial
           map={moonTexture}
-          emissive={allComplete ? '#fbbf24' : color}
-          emissiveIntensity={hovered ? 0.5 : allComplete ? 0.3 : 0.15}
+          emissiveMap={moonTexture}
+          emissive={allComplete ? '#fbbf24' : '#ffffff'}
+          emissiveIntensity={hovered ? 0.7 : allComplete ? 0.5 : 0.4}
         />
         {hovered && (
           <Html center zIndexRange={[50, 0]}>

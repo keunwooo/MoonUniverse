@@ -45,8 +45,9 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
           <sphereGeometry args={[config.size, 32, 32]} />
           <meshStandardMaterial
             map={texture}
-            emissive={config.color}
-            emissiveIntensity={hovered ? 0.4 : 0.1}
+            emissiveMap={texture}
+            emissive="#ffffff"
+            emissiveIntensity={hovered ? 0.8 : 0.5}
           />
         </mesh>
         {/* Moon orbiting this planet */}

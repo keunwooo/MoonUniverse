@@ -57,7 +57,7 @@ export default function SolarSystem({ onPlanetClick, onMoonClick, onStarHover, o
   return (
     <>
       <Skybox />
-      <ambientLight intensity={0.05} />
+      <ambientLight intensity={0.15} />
       <Sun />
       {solarSystem.planets.map((planet) => (
         <group key={planet.id}>
