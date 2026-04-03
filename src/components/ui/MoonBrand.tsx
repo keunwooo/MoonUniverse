@@ -4,11 +4,6 @@ import { useTexture } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import type { Mesh } from 'three'
 
-/**
- * MoonUniverse identity — 3D rotating moon in top-left corner.
- * Inspired by 문아현 (Moon).
- */
-
 function Moon3D() {
   const ref = useRef<Mesh>(null)
   const texture = useTexture('/textures/moon.jpg')
@@ -43,99 +38,89 @@ export default function MoonBrand() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 1.5, delay: 0.2 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2, delay: 0.2 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'fixed',
-        top: '-10px',
-        left: '-10px',
-        zIndex: 8,
+        top: '0.6rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 12,
         pointerEvents: 'auto',
         cursor: 'default',
         userSelect: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
       }}
     >
+      {/* 3D Moon */}
       <motion.div
-        animate={{ scale: hovered ? 1.05 : 1 }}
-        transition={{ type: 'spring', stiffness: 150 }}
-        style={{ position: 'relative', width: '160px', height: '160px' }}
-      >
-        {/* 3D Moon Canvas */}
-        <div style={{
-          width: '160px',
-          height: '160px',
+        animate={{ scale: hovered ? 1.08 : 1 }}
+        transition={{ type: 'spring', stiffness: 200 }}
+        style={{
+          width: '52px',
+          height: '52px',
           borderRadius: '50%',
           overflow: 'hidden',
           boxShadow: hovered
-            ? '0 0 50px rgba(200,190,170,0.35), 0 0 100px rgba(200,190,170,0.15)'
-            : '0 0 30px rgba(200,190,170,0.2), 0 0 60px rgba(200,190,170,0.08)',
+            ? '0 0 25px rgba(251,191,36,0.35), 0 0 50px rgba(251,191,36,0.12)'
+            : '0 0 15px rgba(200,190,170,0.2)',
           transition: 'box-shadow 0.3s',
-        }}>
-          <Canvas
-            camera={{ position: [0, 0, 4], fov: 45 }}
-            style={{ background: 'transparent' }}
-            gl={{ alpha: true }}
-          >
-            <Moon3D />
-          </Canvas>
-        </div>
-
-        {/* Brand text overlay */}
-        <div style={{
-          position: 'absolute',
-          bottom: '18px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          textAlign: 'center',
-          pointerEvents: 'none',
-        }}>
-          <div style={{
-            color: '#fef3c7',
-            fontSize: '12px',
-            fontWeight: 700,
-            letterSpacing: '3px',
-            textShadow: '0 1px 4px rgba(0,0,0,0.9), 0 0 15px rgba(251,191,36,0.3)',
-          }}>
-            MOON
-          </div>
-          <div style={{
-            color: 'rgba(254,243,199,0.5)',
-            fontSize: '7px',
-            letterSpacing: '2px',
-            textShadow: '0 1px 3px rgba(0,0,0,0.9)',
-          }}>
-            UNIVERSE
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Hover message */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        style={{
-          position: 'absolute',
-          top: '148px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          textAlign: 'center',
+          flexShrink: 0,
         }}
       >
-        <span style={{
-          color: '#fbbf24',
-          fontSize: '11px',
-          fontWeight: 600,
-          textShadow: '0 0 10px rgba(0,0,0,0.8)',
-          letterSpacing: '1px',
-        }}>
-          for 문아현 ✨
-        </span>
+        <Canvas
+          camera={{ position: [0, 0, 4], fov: 45 }}
+          style={{ background: 'transparent' }}
+          gl={{ alpha: true }}
+        >
+          <Moon3D />
+        </Canvas>
       </motion.div>
+
+      {/* Text */}
+      <div style={{ lineHeight: 1.1 }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          gap: '3px',
+        }}>
+          <span style={{
+            color: '#fef3c7',
+            fontSize: '16px',
+            fontWeight: 800,
+            letterSpacing: '2px',
+            textShadow: '0 0 12px rgba(251,191,36,0.3)',
+          }}>
+            MOON
+          </span>
+          <span style={{
+            color: '#64748b',
+            fontSize: '16px',
+            fontWeight: 400,
+            letterSpacing: '1px',
+          }}>
+            UNIVERSE
+          </span>
+        </div>
+        <motion.div
+          animate={{ opacity: hovered ? 1 : 0, height: hovered ? '14px' : '0px' }}
+          transition={{ duration: 0.25 }}
+          style={{ overflow: 'hidden' }}
+        >
+          <span style={{
+            color: '#fbbf24',
+            fontSize: '10px',
+            letterSpacing: '1px',
+          }}>
+            for 문아현 ✨
+          </span>
+        </motion.div>
+      </div>
     </motion.div>
   )
 }
