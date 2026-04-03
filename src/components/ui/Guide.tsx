@@ -78,7 +78,7 @@ export default function Guide() {
               display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
               backdropFilter: 'blur(8px)',
               overflowY: 'auto',
-              padding: '3vh 0',
+              padding: '4vh 1rem',
             }}
             onClick={() => setOpen(false)}
           >
@@ -89,18 +89,44 @@ export default function Guide() {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
               style={{
+                position: 'relative',
                 background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(10,15,30,0.99) 100%)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '20px',
-                padding: '1.8rem 1.6rem',
-                maxWidth: '480px',
-                width: '90%',
+                padding: '2rem 1.8rem 1.5rem',
+                maxWidth: '520px',
+                width: '100%',
                 flexShrink: 0,
               }}
             >
+              {/* X close button */}
+              <button
+                onClick={() => setOpen(false)}
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: '#94a3b8',
+                  fontSize: '1rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  lineHeight: 1,
+                  padding: 0,
+                }}
+              >
+                ✕
+              </button>
+
               {/* Header */}
-              <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.3rem' }}>🌌</div>
+              <div style={{ textAlign: 'center', marginBottom: '1.8rem' }}>
+                <div style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🌌</div>
                 <h2 style={{
                   color: '#f1f5f9',
                   fontSize: '1.4rem',
@@ -110,13 +136,13 @@ export default function Guide() {
                 }}>
                   MoonUniverse
                 </h2>
-                <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '0.3rem' }}>
+                <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '0.4rem' }}>
                   우주를 탐험하며 수학을 정복하세요
                 </p>
               </div>
 
               {/* Sections */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
                 {GUIDE_SECTIONS.map((section, si) => (
                   <motion.div
                     key={section.category}
@@ -127,7 +153,7 @@ export default function Guide() {
                     {/* Section header */}
                     <div style={{
                       display: 'flex', alignItems: 'center', gap: '0.5rem',
-                      marginBottom: '0.6rem',
+                      marginBottom: '0.7rem',
                     }}>
                       <div style={{
                         width: '3px', height: '16px',
@@ -145,40 +171,44 @@ export default function Guide() {
                       </span>
                     </div>
 
-                    {/* Items grid */}
+                    {/* Items — single column list */}
                     <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                      gap: '0.5rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.4rem',
                     }}>
                       {section.items.map((item) => (
                         <div key={item.title} style={{
                           background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.06)',
+                          border: '1px solid rgba(255,255,255,0.05)',
                           borderRadius: '10px',
-                          padding: '0.7rem 0.8rem',
+                          padding: '0.6rem 0.9rem',
                           display: 'flex',
-                          gap: '0.6rem',
+                          gap: '0.7rem',
                           alignItems: 'center',
                         }}>
-                          <span style={{ fontSize: '1.2rem', flexShrink: 0 }}>{item.icon}</span>
-                          <div>
-                            <div style={{
-                              color: '#e2e8f0',
-                              fontSize: '0.8rem',
-                              fontWeight: 600,
-                              lineHeight: 1.2,
-                            }}>
-                              {item.title}
-                            </div>
-                            <div style={{
-                              color: '#64748b',
-                              fontSize: '0.7rem',
-                              lineHeight: 1.3,
-                              marginTop: '1px',
-                            }}>
-                              {item.desc}
-                            </div>
+                          <span style={{
+                            fontSize: '1.1rem',
+                            flexShrink: 0,
+                            width: '28px',
+                            textAlign: 'center',
+                          }}>
+                            {item.icon}
+                          </span>
+                          <div style={{
+                            color: '#e2e8f0',
+                            fontSize: '0.85rem',
+                            fontWeight: 600,
+                            minWidth: '100px',
+                            flexShrink: 0,
+                          }}>
+                            {item.title}
+                          </div>
+                          <div style={{
+                            color: '#64748b',
+                            fontSize: '0.8rem',
+                          }}>
+                            {item.desc}
                           </div>
                         </div>
                       ))}
@@ -191,9 +221,9 @@ export default function Guide() {
               <button
                 onClick={() => setOpen(false)}
                 style={{
-                  marginTop: '1.5rem',
+                  marginTop: '1.8rem',
                   width: '100%',
-                  padding: '0.75rem',
+                  padding: '0.8rem',
                   background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
                   border: 'none',
                   borderRadius: '10px',
