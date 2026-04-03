@@ -75,8 +75,10 @@ export default function Guide() {
             style={{
               position: 'fixed', inset: 0, zIndex: 100,
               background: 'rgba(0,0,0,0.8)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
               backdropFilter: 'blur(8px)',
+              overflowY: 'auto',
+              padding: '3vh 0',
             }}
             onClick={() => setOpen(false)}
           >
@@ -90,11 +92,10 @@ export default function Guide() {
                 background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(10,15,30,0.99) 100%)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 borderRadius: '20px',
-                padding: '2rem 1.8rem',
-                maxWidth: '560px',
-                width: '92%',
-                maxHeight: '85vh',
-                overflowY: 'auto',
+                padding: '1.8rem 1.6rem',
+                maxWidth: '480px',
+                width: '90%',
+                flexShrink: 0,
               }}
             >
               {/* Header */}
