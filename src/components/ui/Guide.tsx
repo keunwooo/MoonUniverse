@@ -1,49 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const GUIDE_SECTIONS = [
-  {
-    category: '조작법',
-    color: '#60a5fa',
-    items: [
-      { icon: '🖱️', title: '좌클릭 드래그', desc: '시점 회전' },
-      { icon: '🤚', title: '우클릭 드래그', desc: '카메라 이동' },
-      { icon: '🔍', title: '스크롤', desc: '확대 / 축소' },
-      { icon: '⌨️', title: 'ESC', desc: '뒤로 가기' },
-    ],
-  },
-  {
-    category: '탐색',
-    color: '#a78bfa',
-    items: [
-      { icon: '🪐', title: '행성 클릭', desc: '해당 과목으로 이동' },
-      { icon: '🌙', title: '달 클릭', desc: '입문 튜토리얼 시작' },
-      { icon: '☀️', title: '태양 클릭', desc: '최종 도전 (해금 필요)' },
-      { icon: '🏷️', title: '상단 메뉴', desc: '과목 빠른 이동' },
-    ],
-  },
-  {
-    category: '문제 풀기',
-    color: '#4ade80',
-    items: [
-      { icon: '⭐', title: '별 호버', desc: '문제 미리보기 표시' },
-      { icon: '✏️', title: '별 클릭', desc: '문제 풀이 화면 진입' },
-      { icon: '🔒', title: '보라색 별', desc: '이전 단계 완료 필요' },
-      { icon: '💡', title: '추천 문제', desc: '하단의 추천 버튼 활용' },
-    ],
-  },
-  {
-    category: '성장',
-    color: '#fbbf24',
-    items: [
-      { icon: '✨', title: 'XP 획득', desc: '정답 시 난이도별 XP' },
-      { icon: '🔥', title: '연속 보너스', desc: '3연속 정답 시 1.5배' },
-      { icon: '📈', title: '티어 해금', desc: '70% 달성 시 다음 단계' },
-      { icon: '☀️', title: '최종 도전', desc: '3개 행성 심화 달성' },
-    ],
-  },
-]
-
 export default function Guide() {
   const [open, setOpen] = useState(false)
 
@@ -73,173 +30,154 @@ export default function Guide() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{
-              position: 'fixed', inset: 0, zIndex: 100,
-              background: 'rgba(0,0,0,0.8)',
-              display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
-              backdropFilter: 'blur(8px)',
-              overflowY: 'auto',
-              padding: '4vh 1rem',
+              position: 'fixed',
+              top: 0, left: 0, right: 0, bottom: 0,
+              zIndex: 100,
+              background: 'rgba(0,0,0,0.85)',
+              backdropFilter: 'blur(6px)',
             }}
             onClick={() => setOpen(false)}
           >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                position: 'relative',
-                background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(10,15,30,0.99) 100%)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '20px',
-                padding: '2rem 1.8rem 1.5rem',
-                maxWidth: '520px',
-                width: '100%',
-                flexShrink: 0,
-              }}
-            >
-              {/* X close button */}
-              <button
-                onClick={() => setOpen(false)}
+            {/* Scrollable container */}
+            <div style={{
+              width: '100%',
+              height: '100%',
+              overflowY: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+              padding: '40px 16px',
+            }}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                transition={{ duration: 0.3 }}
+                onClick={(e) => e.stopPropagation()}
                 style={{
-                  position: 'absolute',
-                  top: '1rem',
-                  right: '1rem',
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  color: '#94a3b8',
-                  fontSize: '1rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  lineHeight: 1,
-                  padding: 0,
-                }}
-              >
-                ✕
-              </button>
-
-              {/* Header */}
-              <div style={{ textAlign: 'center', marginBottom: '1.8rem' }}>
-                <div style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🌌</div>
-                <h2 style={{
-                  color: '#f1f5f9',
-                  fontSize: '1.4rem',
-                  fontWeight: 800,
-                  margin: 0,
-                  letterSpacing: '1px',
-                }}>
-                  MoonUniverse
-                </h2>
-                <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '0.4rem' }}>
-                  우주를 탐험하며 수학을 정복하세요
-                </p>
-              </div>
-
-              {/* Sections */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
-                {GUIDE_SECTIONS.map((section, si) => (
-                  <motion.div
-                    key={section.category}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: si * 0.08 }}
-                  >
-                    {/* Section header */}
-                    <div style={{
-                      display: 'flex', alignItems: 'center', gap: '0.5rem',
-                      marginBottom: '0.7rem',
-                    }}>
-                      <div style={{
-                        width: '3px', height: '16px',
-                        background: section.color,
-                        borderRadius: '2px',
-                      }} />
-                      <span style={{
-                        color: section.color,
-                        fontSize: '0.8rem',
-                        fontWeight: 700,
-                        letterSpacing: '1px',
-                        textTransform: 'uppercase',
-                      }}>
-                        {section.category}
-                      </span>
-                    </div>
-
-                    {/* Items — single column list */}
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.4rem',
-                    }}>
-                      {section.items.map((item) => (
-                        <div key={item.title} style={{
-                          background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.05)',
-                          borderRadius: '10px',
-                          padding: '0.6rem 0.9rem',
-                          display: 'flex',
-                          gap: '0.7rem',
-                          alignItems: 'center',
-                        }}>
-                          <span style={{
-                            fontSize: '1.1rem',
-                            flexShrink: 0,
-                            width: '28px',
-                            textAlign: 'center',
-                          }}>
-                            {item.icon}
-                          </span>
-                          <div style={{
-                            color: '#e2e8f0',
-                            fontSize: '0.85rem',
-                            fontWeight: 600,
-                            minWidth: '100px',
-                            flexShrink: 0,
-                          }}>
-                            {item.title}
-                          </div>
-                          <div style={{
-                            color: '#64748b',
-                            fontSize: '0.8rem',
-                          }}>
-                            {item.desc}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Close button */}
-              <button
-                onClick={() => setOpen(false)}
-                style={{
-                  marginTop: '1.8rem',
+                  background: '#0f172a',
+                  border: '1px solid #1e293b',
+                  borderRadius: '16px',
                   width: '100%',
-                  padding: '0.8rem',
-                  background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-                  border: 'none',
-                  borderRadius: '10px',
-                  color: '#fff',
-                  fontSize: '0.95rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  letterSpacing: '1px',
+                  maxWidth: '440px',
+                  padding: '28px 24px',
+                  alignSelf: 'flex-start',
+                  position: 'relative',
                 }}
               >
-                탐험 시작하기 🚀
-              </button>
-            </motion.div>
+                {/* X button */}
+                <button
+                  onClick={() => setOpen(false)}
+                  style={{
+                    position: 'absolute', top: '16px', right: '16px',
+                    width: '28px', height: '28px', borderRadius: '50%',
+                    background: '#1e293b', border: 'none',
+                    color: '#94a3b8', fontSize: '14px',
+                    cursor: 'pointer', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center',
+                  }}
+                >
+                  ✕
+                </button>
+
+                {/* Title */}
+                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '8px' }}>🌌</div>
+                  <div style={{ color: '#f1f5f9', fontSize: '20px', fontWeight: 800 }}>
+                    MoonUniverse
+                  </div>
+                  <div style={{ color: '#64748b', fontSize: '13px', marginTop: '4px' }}>
+                    우주를 탐험하며 수학을 정복하세요
+                  </div>
+                </div>
+
+                {/* Section: 조작법 */}
+                <Section title="조작법" color="#60a5fa">
+                  <Row icon="🖱️" label="좌클릭 드래그" value="시점 회전" />
+                  <Row icon="🤚" label="우클릭 드래그" value="카메라 이동" />
+                  <Row icon="🔍" label="스크롤" value="확대 / 축소" />
+                  <Row icon="⌨️" label="ESC" value="뒤로 가기" />
+                </Section>
+
+                {/* Section: 탐색 */}
+                <Section title="탐색" color="#a78bfa">
+                  <Row icon="🪐" label="행성 클릭" value="해당 과목으로 이동" />
+                  <Row icon="🌙" label="달 클릭" value="입문 튜토리얼 시작" />
+                  <Row icon="☀️" label="태양 클릭" value="최종 도전 (해금 필요)" />
+                  <Row icon="🏷️" label="상단 메뉴" value="과목 빠른 이동" />
+                </Section>
+
+                {/* Section: 문제 풀기 */}
+                <Section title="문제 풀기" color="#4ade80">
+                  <Row icon="⭐" label="별 호버" value="문제 미리보기" />
+                  <Row icon="✏️" label="별 클릭" value="문제 풀이 진입" />
+                  <Row icon="🔒" label="보라색 별" value="이전 단계 완료 필요" />
+                  <Row icon="💡" label="추천 문제" value="하단 버튼 활용" />
+                </Section>
+
+                {/* Section: 성장 */}
+                <Section title="성장" color="#fbbf24">
+                  <Row icon="✨" label="XP 획득" value="정답 시 난이도별 XP" />
+                  <Row icon="🔥" label="연속 보너스" value="3연속 정답 시 1.5배" />
+                  <Row icon="📈" label="티어 해금" value="70% 달성 시 다음 단계" />
+                  <Row icon="☀️" label="최종 도전" value="3개 행성 심화 달성" />
+                </Section>
+
+                {/* Button */}
+                <button
+                  onClick={() => setOpen(false)}
+                  style={{
+                    marginTop: '20px', width: '100%', padding: '12px',
+                    background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+                    border: 'none', borderRadius: '10px',
+                    color: '#fff', fontSize: '15px', fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
+                >
+                  탐험 시작하기 🚀
+                </button>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
+  )
+}
+
+function Section({ title, color, children }: { title: string; color: string; children: React.ReactNode }) {
+  return (
+    <div style={{ marginBottom: '16px' }}>
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '6px',
+        marginBottom: '8px',
+      }}>
+        <div style={{ width: '3px', height: '14px', background: color, borderRadius: '2px' }} />
+        <span style={{ color, fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px' }}>
+          {title}
+        </span>
+      </div>
+      <div style={{
+        background: '#1e293b',
+        borderRadius: '10px',
+        overflow: 'hidden',
+      }}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function Row({ icon, label, value }: { icon: string; label: string; value: string }) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center',
+      padding: '10px 14px',
+      borderBottom: '1px solid #0f172a',
+      gap: '10px',
+    }}>
+      <span style={{ fontSize: '16px', width: '24px', textAlign: 'center', flexShrink: 0 }}>{icon}</span>
+      <span style={{ color: '#e2e8f0', fontSize: '13px', fontWeight: 600, width: '100px', flexShrink: 0 }}>{label}</span>
+      <span style={{ color: '#94a3b8', fontSize: '13px' }}>{value}</span>
+    </div>
   )
 }
