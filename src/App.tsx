@@ -52,16 +52,22 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [currentProblem, closeProblem, cameraTarget])
 
-  const handlePlanetSelect = useCallback((planetId: string) => {
+  const handlePlanetSelect = useCallback((planetId: string, position?: [number, number, number]) => {
     if (!planetId) {
       setActivePlanet(null)
       setCameraTarget(null)
       return
     }
     setActivePlanet(planetId)
-    const planet = solarSystem.planets.find(p => p.id === planetId)
-    if (planet) {
-      setCameraTarget([planet.orbitRadius * 0.7, 2, planet.orbitRadius * 0.7])
+    if (position) {
+      // Use actual planet position from 3D scene
+      setCameraTarget(position)
+    } else {
+      // Fallback for SubjectNav clicks (no 3D position available)
+      const planet = solarSystem.planets.find(p => p.id === planetId)
+      if (planet) {
+        setCameraTarget([planet.orbitRadius * 0.7, 2, planet.orbitRadius * 0.7])
+      }
     }
   }, [])
 

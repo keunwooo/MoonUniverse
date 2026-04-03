@@ -21,7 +21,7 @@ const problemMap: Record<string, Problem[]> = {
 }
 
 interface Props {
-  onPlanetClick: (planetId: string) => void
+  onPlanetClick: (planetId: string, position: [number, number, number]) => void
   onMoonClick: (planetId: string) => void
   onStarHover: (problem: Problem | null) => void
   onStarClick: (problem: Problem) => void

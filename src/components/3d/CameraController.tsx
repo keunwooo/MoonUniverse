@@ -19,9 +19,10 @@ export default function CameraController({ target, onArrived }: Props) {
     if (target) {
       const [x, y, z] = target
       targetLookAt.current.set(x, y, z)
-      // Position camera offset from target for a good viewing angle
-      const dist = Math.sqrt(x * x + z * z) * 0.3 + 8
-      targetPos.current.set(x + dist * 0.4, y + dist * 0.6, z + dist * 0.7)
+
+      // Camera positioned at an offset for good viewing angle
+      const dist = 12
+      targetPos.current.set(x + dist * 0.5, y + dist * 0.7, z + dist)
       isAnimating.current = true
     } else {
       targetPos.current.set(0, 30, 50)
@@ -33,12 +34,16 @@ export default function CameraController({ target, onArrived }: Props) {
   useFrame(() => {
     if (!isAnimating.current || !controlsRef.current) return
 
-    camera.position.lerp(targetPos.current, 0.04)
-    controlsRef.current.target.lerp(targetLookAt.current, 0.04)
+    // Disable user controls during animation
+    controlsRef.current.enabled = false
+
+    camera.position.lerp(targetPos.current, 0.06)
+    controlsRef.current.target.lerp(targetLookAt.current, 0.06)
     controlsRef.current.update()
 
-    if (camera.position.distanceTo(targetPos.current) < 0.1) {
+    if (camera.position.distanceTo(targetPos.current) < 0.3) {
       isAnimating.current = false
+      controlsRef.current.enabled = true
       onArrived?.()
     }
   })

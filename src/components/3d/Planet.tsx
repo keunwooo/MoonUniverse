@@ -7,7 +7,7 @@ import Moon from './Moon'
 
 interface Props {
   config: PlanetConfig
-  onClick: (planetId: string) => void
+  onClick: (planetId: string, position: [number, number, number]) => void
   onMoonClick: (planetId: string) => void
 }
 
@@ -47,7 +47,14 @@ export default function Planet({ config, onClick, onMoonClick }: Props) {
         <mesh
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
-          onClick={() => onClick(config.id)}
+          onClick={() => {
+            if (groupRef.current) {
+              const pos = groupRef.current.position
+              onClick(config.id, [pos.x, pos.y, pos.z])
+            } else {
+              onClick(config.id, [config.orbitRadius, 0, 0])
+            }
+          }}
         >
           <sphereGeometry args={[config.size, 32, 32]} />
           <meshStandardMaterial
