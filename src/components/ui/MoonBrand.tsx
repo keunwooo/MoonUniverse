@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
 import { motion } from 'framer-motion'
@@ -34,15 +34,11 @@ function Moon3D() {
 }
 
 export default function MoonBrand() {
-  const [hovered, setHovered] = useState(false)
-
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, delay: 0.2 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       style={{
         position: 'fixed',
         top: '0.6rem',
@@ -58,18 +54,12 @@ export default function MoonBrand() {
       }}
     >
       {/* 3D Moon */}
-      <motion.div
-        animate={{ scale: hovered ? 1.08 : 1 }}
-        transition={{ type: 'spring', stiffness: 200 }}
-        style={{
+      <div style={{
           width: '52px',
           height: '52px',
           borderRadius: '50%',
           overflow: 'hidden',
-          boxShadow: hovered
-            ? '0 0 25px rgba(251,191,36,0.35), 0 0 50px rgba(251,191,36,0.12)'
-            : '0 0 15px rgba(200,190,170,0.2)',
-          transition: 'box-shadow 0.3s',
+          boxShadow: '0 0 20px rgba(251,191,36,0.25)',
           flexShrink: 0,
         }}
       >
@@ -80,7 +70,7 @@ export default function MoonBrand() {
         >
           <Moon3D />
         </Canvas>
-      </motion.div>
+      </div>
 
       {/* Text */}
       <div style={{ lineHeight: 1.1 }}>
@@ -107,20 +97,17 @@ export default function MoonBrand() {
             UNIVERSE
           </span>
         </div>
-        <motion.div
-          animate={{ opacity: hovered ? 1 : 0, height: hovered ? '20px' : '0px' }}
-          transition={{ duration: 0.25 }}
-          style={{ overflow: 'hidden' }}
-        >
+        <div style={{ marginTop: '2px' }}>
           <span style={{
             color: '#fbbf24',
             fontSize: '11px',
-            letterSpacing: '1px',
-            lineHeight: '20px',
+            fontWeight: 600,
+            letterSpacing: '1.5px',
+            textShadow: '0 0 8px rgba(251,191,36,0.25)',
           }}>
             for 문아현 ✨
           </span>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   )
