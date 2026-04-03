@@ -48,17 +48,19 @@ export default function Planet({ config, onClick }: Props) {
         {/* Moon orbiting this planet */}
         <Moon parentPosition={[0, 0, 0]} color={config.color} />
         {hovered && (
-          <Html center distanceFactor={15}>
+          <Html center zIndexRange={[50, 0]}>
             <div style={{
-              background: 'rgba(15,23,42,0.9)',
+              background: 'rgba(15,23,42,0.92)',
               border: `1px solid ${config.color}`,
-              borderRadius: '8px',
-              padding: '6px 12px',
+              borderRadius: '10px',
+              padding: '8px 18px',
               color: '#f1f5f9',
-              fontSize: '14px',
-              fontWeight: 600,
+              fontSize: '16px',
+              fontWeight: 700,
               whiteSpace: 'nowrap',
               pointerEvents: 'none',
+              backdropFilter: 'blur(8px)',
+              boxShadow: `0 0 12px ${config.color}44`,
             }}>
               {config.name}
             </div>
